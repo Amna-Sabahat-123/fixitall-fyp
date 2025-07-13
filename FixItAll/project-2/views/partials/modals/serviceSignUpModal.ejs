@@ -1,0 +1,262 @@
+<div class="modal fade" id="serviceProviderSignupModal" tabindex="-1" aria-labelledby="serviceProviderSignupModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-custom-width">
+        <div class="modal-content p-4">
+            <div class="d-flex justify-content-between align-items-center position-relative mb-3">
+                <!-- Back Button (Top Left) -->
+
+                <h3 class="text-center mb-0 Our p-0"
+                    style="font-size: clamp(20px, 2vw, 35px); color: #4a4a4a; flex-grow: 1;">
+                    Service Provider Sign Up
+                </h3>
+                <!-- Close Button (Top Right) -->
+                <button type="button" class="btn" style="font-size: 1.5rem; color: #4a4a4a; padding: 0;"
+                    data-bs-dismiss="modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <!-- Signup Form -->
+            <form id="serviceProviderSignupForm" action="/serviceProvider/register" method="POST">
+                <div class="mb-3">
+                    <label for="fullName" class="form-label">Full Name</label>
+                    <input type="text" class="form-control" id="fullName" placeholder="Enter your full name" required
+                        name="fullName">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email" required
+                        name="email">
+                </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" required
+                        name="phone">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Enter your password" required
+                        name="password">
+                </div>
+                <div class="mb-3">
+                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm your password"
+                        required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">What type of service are you
+                        providing?</label>
+                    <select class="form-control" id="exampleFormControlSelect1" name="serviceCategory">
+                        <option value="Construction">Construction</option>
+                        <option value="Home Shifting">Home Shifting</option>
+                        <option value="Solar Panel Installation">Solar Panel Installation</option>
+                        <option value="Electrical Services">Electrical Services</option>
+                        <option value="Fulfil Labour Requirements">Fulfil Labour Requirements</option>
+                        <option value="Plumbing Services">Plumbing Services</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="confirmPassword" class="form-label">Describe your service
+                        in detail.
+                        <small class="text-muted">(Optional)</small></label>
+                    <input type="text" class="form-control" name="description"
+                        placeholder="Describe your service (optional)">
+                </div>
+                <div class="mb-3">
+                    <label for="confirmPassword" class="form-label">What do you charge for your service?
+                        <small class="text-muted">(In PKR only)</small></label> </label>
+                    <input type="number" name="baseRate" class="form-control" id="baseRate" placeholder="0" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Add Weekly Availability</label>
+                    <div id="availabilityContainer">
+                        <div class="row mb-2 availability-row align-items-center">
+                            <div class="col-md-3 p-0">
+                                <select class="form-control" name="availability[0][day]" required>
+                                    <option value="">Select Day</option>
+                                    <option value="Monday">Monday</option>
+                                    <option value="Tuesday">Tuesday</option>
+                                    <option value="Wednesday">Wednesday</option>
+                                    <option value="Thursday">Thursday</option>
+                                    <option value="Friday">Friday</option>
+                                    <option value="Saturday">Saturday</option>
+                                    <option value="Sunday">Sunday</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <span>From</span>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="time" class="form-control" name="availability[0][from]" required>
+                            </div>
+                            <div class="col-md-1 text-center">
+                                <span>to</span>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="time" class="form-control" name="availability[0][to]" required>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-sm btn-outline-primary" onclick="addAvailability()">Add
+                        More</button>
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="location" class="form-label">Location</label>
+                    <input type="text" class="form-control" id="location" placeholder="Enter your location"
+                        name="location" required>
+                    <!-- Map for selecting location -->
+                    <div id="providerMap" style="height: 100px; margin-top: 10px;"></div>
+
+                    <input type="hidden" id="latitude" name="lat">
+                    <input type="hidden" id="longitude" name="lng">
+                </div>
+
+                <div class="mb-3 form-check d-flex align-items-center">
+                    <input type="checkbox" class="form-check-input" id="agreement" required name="agreement">
+                    <label class="form-check-label" for="agreement">I agree to the
+                        <a href="#" style="color: #469DCD; text-decoration: underline;" id="serviceTermsLink">terms and
+                            conditions.</a>
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-site w-100" style="font-weight: normal;">Create
+                    Account</button>
+                <p>Already have an account? <a href="#" id="ServiceloginLink">Login</a></p>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Leaflet CSS & JS -->
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- Leaflet Geocoder -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+<script>
+    let availabilityIndex = 1;
+
+    function addAvailability() {
+        const container = document.getElementById("availabilityContainer");
+        const row = document.createElement("div");
+        row.className = "row mb-2 availability-row align-items-center";
+        row.innerHTML = `
+            <div class="col-md-4">
+                <select class="form-control" name="availability[${availabilityIndex}][day]" required>
+                    <option value="">Select Day</option>
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
+                    <option value="Sunday">Sunday</option>
+                </select>
+            </div>
+            <div class="col-md-3 text-center">
+                <span>From</span>
+            </div>
+            <div class="col-md-3">
+                <input type="time" class="form-control" name="availability[${availabilityIndex}][from]" required>
+            </div>
+            <div class="col-md-1 text-center">
+                <span>to</span>
+            </div>
+            <div class="col-md-2">
+                <input type="time" class="form-control" name="availability[${availabilityIndex}][to]" required>
+            </div>
+        `;
+        container.appendChild(row);
+        availabilityIndex++;
+    }
+    let providerMap;
+    let providerMarker;
+
+    function initProviderMap() {
+        if (providerMap) {
+            providerMap.invalidateSize();
+            return;
+        }
+
+        providerMap = L.map('providerMap').setView([33.5886, 71.4425], 13); // Center on Kohat
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(providerMap);
+
+        // Add geocoder (search bar)
+        const geocoder = L.Control.geocoder({
+            geocoder: L.Control.Geocoder.nominatim(),
+            defaultMarkGeocode: false
+        })
+            .on('markgeocode', e => {
+                const { center, name } = e.geocode;
+                placeProviderMarker(center);
+                setProviderLocation(center, name);
+            })
+            .addTo(providerMap);
+
+        providerMap.on('click', function (e) {
+            placeProviderMarker(e.latlng);
+            reverseGeocodeAndFill(e.latlng);
+        });
+
+        function placeProviderMarker(latlng) {
+            if (providerMarker) {
+                providerMarker.setLatLng(latlng);
+            } else {
+                providerMarker = L.marker(latlng).addTo(providerMap);
+            }
+        }
+
+        function setProviderLocation(latlng, name = '') {
+            document.getElementById('latitude').value = latlng.lat;
+            document.getElementById('longitude').value = latlng.lng;
+            if (name) document.getElementById('location').value = name;
+        }
+
+        function reverseGeocodeAndFill(latlng) {
+            fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latlng.lat}&lon=${latlng.lng}`)
+                .then(res => res.json())
+                .then(data => {
+                    const address = data.display_name || '';
+                    document.getElementById('location').value = address;
+                    setProviderLocation(latlng, address);
+                })
+                .catch(err => {
+                    console.error('Reverse geocode failed:', err);
+                    document.getElementById('location').value = '';
+                });
+        }
+
+        // Manual location input
+        document.getElementById('location').addEventListener('change', e => {
+            const query = e.target.value;
+            geocoder.options.geocoder.geocode(query, results => {
+                if (results && results.length > 0) {
+                    const r = results[0];
+                    providerMap.setView(r.center, 14);
+                    placeProviderMarker(r.center);
+                    setProviderLocation(r.center, r.name);
+                } else {
+                    alert('Location not found.');
+                }
+            });
+        });
+    }
+
+    // Initialize map when modal opens
+    $('#serviceProviderSignupModal').on('shown.bs.modal', function () {
+        setTimeout(() => {
+            initProviderMap();
+        }, 300); // small delay to ensure modal is fully shown
+    });
+</script>

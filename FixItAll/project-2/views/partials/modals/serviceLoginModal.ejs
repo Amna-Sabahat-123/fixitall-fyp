@@ -1,0 +1,34 @@
+<div class="modal fade" id="ServiceloginModal" tabindex="-1" aria-labelledby="ServiceloginModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-custom-width">
+        <div class="modal-content px-4 py-4">
+            <div class="d-flex justify-content-between align-items-center position-relative mb-3">
+
+                <h3 class="text-center mb-0 Our p-0"
+                    style="font-size: clamp(20px, 2vw, 35px); color: #4a4a4a; flex-grow: 1;">
+                    Service Provider Login
+                </h3>
+                <!-- Close Button (Top Right) -->
+                <button type="button" class="btn" style="font-size: 1.5rem; color: #4a4a4a; padding: 0;"
+                    data-bs-dismiss="modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <!-- Signup Form -->
+            <form id="customerSignupForm" action="/serviceProvider/login" method="POST">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email" required name="email">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Enter your password"
+                        required name="password">
+                </div>
+                <button type="submit" class="btn btn-site w-100" style="font-weight: normal;">Login</button>
+                <p>Don't have an account? <a href="#" id="serviceSignUpFromLogin">Sign
+                        Up!</a></p>
+            </form>
+        </div>
+    </div>
+</div>

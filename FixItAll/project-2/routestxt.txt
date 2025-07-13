@@ -1,0 +1,4 @@
+/ -> home
+/admin -> admin panel
+/customerAccount/dashboard -> dashboard
+/serviceProvider/dashboard -> dashboard

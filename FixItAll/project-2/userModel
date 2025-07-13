@@ -1,0 +1,26 @@
+Customer 
+
+FullName - String
+Email - String
+contact - Number
+Password - String 
+Location - String 
+Agreement - bool
+isAdmin - bool
+orders - array 
+
+
+Service Provider
+
+FullName - String
+Email - String
+contact - Number
+Password - String 
+Location - String 
+Agreement - bool
+isAdmin - bool
+ordersDone - array 
+Availibility
+Service
+
+linear-gradient(90deg, #E6F0F6 100%, rgba(217, 217, 217, 0.00) 0%)

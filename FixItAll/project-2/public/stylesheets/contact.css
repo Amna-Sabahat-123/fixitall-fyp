@@ -1,0 +1,701 @@
+
+
+.body{
+    background: #dde6ec;
+}
+.logoimage{
+    height: 100px; /* Adjust logo height as needed */
+    margin-right: 0px;
+
+}
+/* .secondsection{
+    height: 80vh;
+} */
+
+.nav-link{
+    color: #0D121C;
+    font-family: "Josefin Sans";
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: 1.2px;
+
+}
+.homelink{
+    color: #469DCD !important;
+    font-weight: 500;
+
+
+ }
+.navbar-nav {
+    gap: 55px !important;
+}
+
+
+
+
+
+
+
+
+
+.map-iframe {
+    position: relative;
+    z-index: 2; /* Ensure the iframe is above the blue box */
+    padding-top: 120px;
+}
+.mapsection{
+    margin-top: 70px;
+    margin-bottom: 50px !important;
+}
+.getintouch{
+    color: var(--black, #000);
+    font-family: Montserrat;
+    font-size: 3.385rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.touch{
+    font-size: 3rem;
+    font-weight: bold;
+    color: #0D121C !important;
+    margin-top: 2rem;
+}
+:root {
+    --default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC",
+      "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei",
+      "Source Han Sans CN", sans-serif;
+  }
+  
+  .main-container {
+    overflow: hidden;
+  }
+  
+  .main-container,
+  .main-container * {
+    box-sizing: border-box;
+  }
+  
+  input,
+  select,
+  textarea,
+  button {
+    outline: 0;
+  }
+  
+  .main-containers {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    gap: 20px;
+    position: relative;
+    width: 545px;
+    margin: 0 auto;
+  }
+  .text-field {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    gap: 10px;
+    position: relative;
+    width: 545px;
+    height: 50px;
+    padding: 12px 20px 12px 20px;
+    border: 1px solid #e0e0e0;
+  }
+  .name {
+    flex-shrink: 0;
+    position: relative;
+    width: 53px;
+    font-family: Montserrat, var(--default-font-family);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    text-overflow: initial;
+    white-space: nowrap;
+    letter-spacing: 0.14px;
+    z-index: 1;
+  }
+  .name-text {
+    position: relative;
+    color: #828282;
+    font-family: Montserrat, var(--default-font-family);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    letter-spacing: 0.14px;
+  }
+  .required {
+    position: relative;
+    color: #eb5757;
+    font-family: Montserrat, var(--default-font-family);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    letter-spacing: 0.14px;
+  }
+  .text-field-1 {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    gap: 10px;
+    position: relative;
+    width: 545px;
+    height: 50px;
+    padding: 12px 20px 12px 20px;
+    border: 1px solid #e0e0e0;
+    z-index: 2;
+    overflow: hidden;
+  }
+  .text-field-input {
+    flex-shrink: 0;
+    position: absolute;
+    width: 545px;
+    height: 50px;
+    top: -1px;
+    left: -1px;
+    background: transparent;
+    border: none;
+    z-index: 4;
+    outline: none;
+  }
+  .email {
+    flex-shrink: 0;
+    flex-basis: auto;
+    position: relative;
+    height: 24px;
+    color: #828282;
+    font-family: Montserrat, var(--default-font-family);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    white-space: nowrap;
+    letter-spacing: 0.14px;
+    z-index: 3;
+  }
+  .text-field-2 {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    gap: 10px;
+    position: relative;
+    width: 545px;
+    height: 50px;
+    padding: 12px 20px 12px 20px;
+    border: 1px solid #e0e0e0;
+    z-index: 5;
+    overflow: hidden;
+  }
+  .text-field-input-3 {
+    flex-shrink: 0;
+    position: absolute;
+    width: 545px;
+    height: 50px;
+    top: -1px;
+    left: -1px;
+    background: transparent;
+    border: none;
+    z-index: 7;
+    outline: none;
+  }
+  .phone-number {
+    flex-shrink: 0;
+    position: relative;
+    width: 119px;
+    font-family: Montserrat, var(--default-font-family);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    text-overflow: initial;
+    white-space: nowrap;
+    letter-spacing: 0.14px;
+    z-index: 6;
+  }
+  .phone-number-4 {
+    position: relative;
+    color: #828282;
+    font-family: Montserrat, var(--default-font-family);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    letter-spacing: 0.14px;
+  }
+  .asterisk {
+    position: relative;
+    color: #eb5757;
+    font-family: Montserrat, var(--default-font-family);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    letter-spacing: 0.14px;
+  }
+  .dropdown {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    position: relative;
+    width: 545px;
+    height: 50px;
+    padding: 12px 20px 12px 20px;
+    border: 1px solid #e0e0e0;
+    z-index: 8;
+  }
+  .find-us {
+    flex-shrink: 0;
+    flex-basis: auto;
+    position: relative;
+    height: 24px;
+    color: #000000;
+    font-family: Montserrat, var(--default-font-family);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    white-space: nowrap;
+    letter-spacing: 0.14px;
+    z-index: 9;
+  }
+  .vector {
+    flex-shrink: 0;
+    position: relative;
+    width: 12px;
+    height: 6px;
+    background: url(./assets/images/d0fe3f65-fbfe-41af-b12b-e6435b616015.png)
+      no-repeat center;
+    background-size: cover;
+    z-index: 10;
+  }
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    gap: 10px;
+    position: relative;
+    width: 545px;
+    height: 50px;
+    padding: 12px 24px 12px 24px;
+    cursor: pointer;
+    background: #469ccc;
+    border: none;
+    z-index: 11;
+  }
+  .send {
+    flex-shrink: 0;
+    flex-basis: auto;
+    position: relative;
+    height: 20px;
+    color: #ffffff;
+    font-family: Montserrat, var(--default-font-family);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19.504px;
+    text-align: left;
+    text-transform: uppercase;
+    white-space: nowrap;
+    z-index: 12;
+  }
+  
+
+  .bluesection{
+    height: 10vh;
+    background-color:#469ccc ;
+    margin-top:  50px !important;
+  }
+    
+
+  
+  :root {
+    --default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC",
+      "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei",
+      "Source Han Sans CN", sans-serif;
+  }
+  
+  .main-container {
+    overflow: hidden;
+  }
+  
+  .main-container,
+  .main-container * {
+    box-sizing: border-box;
+  }
+  
+  input,
+  select,
+  textarea,
+  button {
+    outline: 0;
+  }
+  
+  .main-container {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    gap: 50px;
+    position: relative;
+    width: 423px;
+    margin: 0 auto;
+  }
+  .frame-1 {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    gap: 15px;
+    position: relative;
+    width: 150px;
+  }
+  .frame-2 {
+    flex-shrink: 0;
+    position: relative;
+    width: 28px;
+    height: 28px;
+    z-index: 1;
+  }
+  .icon {
+    position: relative;
+    width: 28px;
+    height: 28px;
+    margin: 0.42px 0 0 -0.27px;
+    background: url(./assets/images/0db29dbf-8330-4db4-8519-03a6beb99bf6.png)
+      no-repeat center;
+    background-size: 100% 100%;
+    z-index: 2;
+  }
+  .phone {
+    flex-shrink: 0;
+    position: relative;
+    width: 107px;
+    font-family: Montserrat, var(--default-font-family);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+    text-overflow: initial;
+    white-space: nowrap;
+    letter-spacing: 0.26px;
+    z-index: 3;
+  }
+  .phone-3 {
+    position: relative;
+    color: #000000;
+    font-family: Montserrat, var(--default-font-family);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 20px;
+    text-align: left;
+    letter-spacing: 0.26px;
+  }
+  .phone-number {
+    position: relative;
+    color: #469ccc;
+    font-family: Montserrat, var(--default-font-family);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+    letter-spacing: 0.26px;
+  }
+  .frame-4 {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    gap: 15px;
+    position: relative;
+    width: 223px;
+    z-index: 4;
+  }
+  .frame-5 {
+    flex-shrink: 0;
+    position: relative;
+    width: 28px;
+    height: 28px;
+    z-index: 5;
+  }
+  .icon-6 {
+    position: relative;
+    width: 24.818px;
+    height: 22.75px;
+    margin: 2.625px 0 0 1.75px;
+    background: url(./assets/images/8fe30e6c-d961-4a5d-b338-c5f8eb0b0259.png)
+      no-repeat center;
+    background-size: 100% 100%;
+    z-index: 6;
+  }
+  .email {
+    flex-shrink: 0;
+    position: relative;
+    width: 180px;
+    font-family: Montserrat, var(--default-font-family);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+    text-overflow: initial;
+    white-space: nowrap;
+    letter-spacing: 0.26px;
+    z-index: 7;
+  }
+  .email-7 {
+    position: relative;
+    color: #000000;
+    font-family: Montserrat, var(--default-font-family);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 20px;
+    text-align: left;
+    letter-spacing: 0.26px;
+  }
+  .email-8 {
+    position: relative;
+    color: #469ccc;
+    font-family: Montserrat, var(--default-font-family);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+    letter-spacing: 0.26px;
+  }
+  
+
+                                        /*  footer  */
+                                        
+                                                  
+                                                 
+                                                  
+.heading1{
+    color: #FFF;
+font-family: Poppins;
+font-size: 2rem;
+font-style: normal;
+font-weight: 700;
+line-height: 1.375rem; /* 68.75% */
+}
+.parag1{
+    padding-bottom: 20px;
+    padding-top: 20px;
+    color: #FFF;
+font-family: Poppins;
+font-size: 1.5rem;
+font-style: normal;
+font-weight: 400;
+line-height: 1.375rem; /* 91.667% */
+}
+.BLS{
+    padding-top: 100px;
+    align-items: center !important;
+    text-align: center;
+}
+.blue-box {
+    /* padding-top: 500px !important; */
+    background: #469DCD;
+        width: 345px; /* Same width as the iframe */
+    height:901px; /* Same height as the iframe */
+    position: absolute;
+    margin-left: 202px !important;
+    top: 20px; /* Adjust this to move the blue box relative to the iframe */
+    left: 20px; /* Adjust this to move the blue box relative to the iframe */
+    z-index: 1; /* Ensure the blue box is behind the iframe */
+}
+
+.map-iframe {
+    position: relative;
+    z-index: 2; /* Ensure the iframe is above the blue box */
+    padding-top: 120px;
+}
+.mapsection{
+    margin-top: 70px;
+    margin-bottom: 50px !important;
+}
+.getintouch{
+    color: #469DCD;
+font-family: Montserrat;
+font-size: 3.375rem;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.getintouch{
+    font-size: 3rem;
+    font-weight: bold;
+    margin-top: 2rem;
+}
+.form-container{
+    padding-left: 400px;
+
+}
+.form-container input, .form-container select{
+    width: 40%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    /* border: 1px solid #ccc; */
+    border-radius: 5px;
+    font-size: 1rem;
+}
+.form-container button{
+    background-color:  #469DCD;;
+    color: #fff;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.form-container button:hover{
+    background-color: #0056b3;
+}
+.contact-info{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+}
+.contact-info i{
+    font-size: 2rem;
+}
+.contact-info p{
+    margin-bottom: 0;
+    font-size: 1rem;
+}
+.image-container {
+    position: relative;
+    /* border: 3px solid pink; */
+    width: 98.5vw;
+    height: 10vh; /* Adjust the height as needed */
+}
+
+.image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1; /* Adjust the opacity as needed */
+      background: linear-gradient(to bottom, 
+                                       );
+}
+.image-container img:nth-child(1) {
+    z-index: 1;
+}
+
+.image-container img:nth-child(2) {
+    z-index: 2;
+}
+
+.image-container img:nth-child(3) {
+    z-index: 3;
+}
+.stretched-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    padding: 10px 20px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #fff;
+    font-family: Roboto;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: none;
+    
+}
+.stretched-button:hover {
+    background-color: #e2e6ea;
+}
+
+.stretched-button:hover {
+background-color: #e2e6ea;
+}
+
+.stretched-button .arrow {
+font-size: 20px;
+}
+.footerimg{
+width: 300px;
+height: 170px;
+/* border: #469DCD 2px solid; */
+
+/* flex-shrink: 0; */
+}
+.parag{
+width: 300px;
+color: #000;
+font-family: "Inria Sans";
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+margin-left: 5% !important;
+margin-top: -15px;
+line-height: normal;
+/* border: #469DCD 2px solid; */
+}
+.company{
+    color: #469DCD;
+     font-family: Roboto;
+}
+.lastsection{
+    margin-top: 50px;
+}
+.abovefooter{
+    margin-top: 100px !important;
+}
+
+
+
+
+
+                        /* responsiveness */
+                        @media (min-width: 375px) and (max-width: 667px) {
+                            .getintouchsection{
+                                margin-left:0px !important ;
+                            }
+                            .getintouch{
+                                color: var(--black, #000);
+                                font-family: Montserrat;
+                                font-size: 2rem;
+                                font-style: normal;
+                                font-weight: 500;
+                                line-height: normal;
+                            }
+                            .touch{
+                                font-size: 2rem;
+                                font-weight: bold;
+                                color: blue !important;
+                                margin-top: 2rem;
+                            }
+                            .main-containers{
+                                padding-left: 0px !important;
+                            }
+                            .main-containers {
+                                display: flex;
+                                flex-direction: column;
+                                align-items: flex-start;
+                                flex-wrap: nowrap;
+                                gap: 20px;
+                                position: relative;
+                                width: 545px;
+                                margin: 0 auto;
+                              }
+                        };
+                

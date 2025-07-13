@@ -1,0 +1,410 @@
+.body {
+  background: #dde6ec;
+}
+
+
+.aboutlink {
+  color: #469DCD !important;
+  font-weight: 500;
+
+
+}
+
+
+.services-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: url('/images/ourservicesbackgrounimage.png') no-repeat center center/cover;
+}
+
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  /* Dark overlay */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* .overlay h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+  font-family: "Josefin Sans";
+  font-size: 66px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: capitalize;
+} */
+
+h1 span {
+  color: #469DCD;
+}
+.aboutnav{
+  color: #469DCD !important;
+}
+
+/* .overlay p {
+  font-size: 1.2em;
+  margin: 10px 0;
+  color: #EFF0FE;
+  text-align: center;
+  font-family: "Inria Sans";
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: capitalize;
+} */
+
+
+/* .ourmission{
+    font-size: 20px;
+
+} */
+
+.sectionblue {
+  background-color: #469DCD;
+}
+
+/* .para{
+    color: #0D121C;
+text-align: center;
+font-family: "Inria Sans";
+font-size: 28px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+text-transform: capitalize;
+} */
+.navlink {
+  color: #469DCD;
+  font-family: "Josefin Sans";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1.2px;
+
+}
+
+.nav-item {
+  color: #469DCD;
+  font-family: "Josefin Sans";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 1.2px;
+  word-spacing: 2px;
+}
+
+/* .Our{
+   color: #0D121C;
+        font-size: 3em;
+        margin-bottom: 20px;
+    font-family: "Josefin Sans";
+    font-size: 66px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: capitalize;
+    } */
+.card {
+  border: none;
+}
+
+.card-title {
+  color: #0D121C;
+  font-family: "Inria Sans";
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: capitalize;
+}
+
+.card-text {
+  color: #0D121C;
+  font-family: "Inria Sans";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: capitalize;
+}
+
+.bluesection {
+  height: 20vh;
+  background-color: #469DCD;
+  align-items: center;
+
+}
+
+.btn-custom:hover {
+  background-color: #e0e0e0;
+  color: #007bff;
+}
+
+.contactme {
+  height: 3em;
+  width: 15em;
+  font-size: larger;
+  font-family: "Josefin Sans";
+  font-weight: 800;
+  line-height: normal;
+  text-transform: capitalize;
+  border-radius: 5rem;
+  border: none;
+  background: #FFF;
+  color: #007bff;
+}
+
+.image-container {
+  position: relative;
+  /* border: 3px solid pink; */
+  width: 98.5vw;
+  height: 10vh;
+  /* Adjust the height as needed */
+}
+
+.image-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  /* Adjust the opacity as needed */
+  background: linear-gradient(to bottom,
+    );
+}
+
+.image-container img:nth-child(1) {
+  z-index: 1;
+}
+
+.image-container img:nth-child(2) {
+  z-index: 2;
+}
+
+.image-container img:nth-child(3) {
+  z-index: 3;
+}
+
+.stretched-button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  padding: 10px 20px;
+  text-align: left;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #fff;
+  font-family: Roboto;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border: none;
+
+}
+
+.stretched-button:hover {
+  background-color: #e2e6ea;
+}
+
+.stretched-button .arrow {
+  font-size: 20px;
+}
+
+.footerimg {
+  width: 300px;
+  height: 170px;
+  /* border: #469DCD 2px solid; */
+
+  /* flex-shrink: 0; */
+}
+
+.parag {
+  width: 300px;
+  color: #000;
+  font-family: "Inria Sans";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  margin-left: 5% !important;
+  margin-top: -15px;
+  line-height: normal;
+  /* border: #469DCD 2px solid; */
+}
+
+.social-link {
+  margin-left: 5% !important;
+
+}
+
+.social-icon {
+  box-shadow: 5px 5px 10px rgba(129, 121, 121, 0.5);
+  font-size: 24px;
+
+
+}
+
+.company {
+  color: #469DCD;
+
+  font-family: Roboto;
+}
+
+.companydiv {
+  pa-left: 10px;
+  /* border: #469DCD 2px solid; */
+
+}
+
+
+
+/* For medium screens (md) and above */
+@media (min-width: 576px) and (max-width: 767px) {
+  .para {
+    font-size: 16px;
+    line-height: 1.7;
+    padding: 15px;
+  }
+}
+
+/* For large screens (lg) and above */
+@media (min-width: 768px) and (max-width: 991px) {
+  .para {
+    font-size: 18px;
+    line-height: 1.9;
+    padding: 20px;
+  }
+}
+
+/* For extra large screens (xl) and above */
+@media (min-width: 992px) {
+  .para {
+    font-size: 20px;
+    line-height: 2.1;
+    padding: 25px;
+  }
+}
+
+
+
+
+/* For small screens (sm) and below */
+@media (max-width: 575px) {
+  .services-section {
+    padding: 20px;
+  }
+
+  .overlay {
+    padding: 10px;
+  }
+
+  .about {
+    font-size: 24px;
+  }
+
+  .pb-5 {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .ourmission {
+    font-size: 20px;
+  }
+
+  .sectionblue {
+    padding: 10px;
+  }
+}
+
+
+
+/* For large screens (lg) and above */
+@media (min-width: 768px) and (max-width: 991px) {
+  .services-section {
+    padding: 40px;
+  }
+
+  .overlay {
+    padding: 30px;
+  }
+
+  .about {
+    font-size: 36px;
+  }
+
+  .pb-5 {
+    font-size: 18px;
+    line-height: 1.9;
+  }
+
+  .ourmission {
+    font-size: 28px;
+  }
+
+  .sectionblue {
+    padding: 30px;
+  }
+}
+
+/*about responsiveness  */
+@media (min-width: 375px) and (max-width: 667px) {
+  .overlay {
+    padding: 15px;
+  }
+
+  .overlay h1 {
+    font-size: 2em;
+  }
+
+  h1 span {
+    font-size: 1em;
+  }
+
+  .overlay p {
+    font-size: 1em;
+  }
+}
+
+/* Additional responsive styles for smaller screens */
+@media (max-width: 375px) {
+  .overlay {
+    padding: 10px;
+
+  }
+
+  .overlay h1 {
+    font-size: 1.5em;
+
+  }
+
+  h1 span {
+    font-size: 1.3em;
+  }
+
+  .overlay p {
+    font-size: 0.8em;
+  }
+
+  .logoimage {
+    height: 100px;
+    /* Adjust logo height as needed */
+    width: 150px;
+  }
+}

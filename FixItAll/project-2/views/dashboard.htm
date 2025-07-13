@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>User Dashboard</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<style>
+  .profile-pic {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+  }
+
+  .edit-btn {
+    margin-top: 10px;
+  }
+
+  .tab-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  hr {
+    border-top: 2px solid #ccc;
+  }
+</style>
+
+<body>
+  <div class="container-fluid mt-4">
+    <h2 class="text-center">Dashboard</h2>
+    <hr>
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-md-3">
+        <div class="text-center mb-4">
+          <img id="profileImage" src="https://via.placeholder.com/150" alt="Profile Picture"
+            class="rounded-circle profile-pic">
+          <div>
+            <input type="file" id="imageUpload" style="display: none;" accept="image/*">
+            <button class="btn btn-primary btn-sm edit-btn" onclick="document.getElementById('imageUpload').click();">Edit</button>
+          </div>
+        </div>
+
+        <ul class="nav flex-column nav-pills" id="dashboardTabs" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="services-tab" data-toggle="pill" href="#services" role="tab">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="personal-info-tab" data-toggle="pill" href="#personal-info" role="tab">Personal Info</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="past-services-tab" data-toggle="pill" href="#past-services" role="tab">Past Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="reviews-tab" data-toggle="pill" href="#reviews" role="tab">Service Provider Reviews</a>
+          </li>
+          <li class="nav-item mt-3">
+            <button class="btn btn-danger btn-block" id="logoutBtn">Logout</button>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Content Area -->
+      <div class="col-md-9">
+        <div class="tab-title" id="activeTabTitle">Services</div>
+        <div class="tab-content" id="dashboardTabContent">
+          <div class="tab-pane fade show active" id="services" role="tabpanel">Your current services content goes here.</div>
+          <div class="tab-pane fade" id="personal-info" role="tabpanel">Your personal info content goes here.</div>
+          <div class="tab-pane fade" id="past-services" role="tabpanel">Your past services content goes here.</div>
+          <div class="tab-pane fade" id="reviews" role="tabpanel">Service provider reviews content goes here.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('logoutBtn').addEventListener('click', function () {
+      alert('Logging out...');
+      // Add logout logic here
+    });
+
+    // Profile image update
+    document.getElementById('imageUpload').addEventListener('change', function (e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          document.getElementById('profileImage').src = e.target.result;
+        }
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Update active tab title
+    $('#dashboardTabs a').on('shown.bs.tab', function (event) {
+      const activeTabText = $(event.target).text();
+      document.getElementById('activeTabTitle').innerText = activeTabText;
+    });
+  </script>
+</body>
+
+</html>

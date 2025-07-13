@@ -1,0 +1,25 @@
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-custom-width">
+    <div class="modal-content px-4 py-4">
+      <div class="d-flex justify-content-between align-items-center position-relative mb-3">
+        <h3 class="text-center mb-0 Our p-0" style="font-size: clamp(20px, 2vw, 35px); color: #4a4a4a; flex-grow: 1;">Customer Login</h3>
+        <button type="button" class="btn" style="font-size: 1.5rem; color: #4a4a4a; padding: 0;" data-bs-dismiss="modal">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <form id="customerLoginForm" action="/customers/login" method="POST">
+        <div class="mb-3">
+          <label for="loginEmail" class="form-label">Email</label>
+          <input type="email" class="form-control" id="loginEmail" placeholder="Enter your email" required name="email">
+        </div>
+        <div class="mb-3">
+          <label for="loginPassword" class="form-label">Password</label>
+          <input type="password" class="form-control" id="loginPassword" placeholder="Enter your password" required name="password">
+        </div>
+        <button type="submit" class="btn btn-site w-100" style="font-weight: normal;">Login</button>
+        <p>Don't have an account? <a href="#" id="signUpLink">Sign Up!</a></p>
+      </form>
+    </div>
+  </div>
+</div>

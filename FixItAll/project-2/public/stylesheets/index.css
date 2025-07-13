@@ -1,0 +1,153 @@
+:root {
+  --default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC",
+    "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei",
+    "Source Han Sans CN", sans-serif;
+}
+
+.main-container {
+  overflow: hidden;
+}
+
+.main-container,
+.main-container * {
+  box-sizing: border-box;
+}
+
+input,
+select,
+textarea,
+button {
+  outline: 0;
+}
+
+.main-container {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  gap: 50px;
+  position: relative;
+  width: 423px;
+  margin: 0 auto;
+}
+.frame-1 {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  gap: 15px;
+  position: relative;
+  width: 150px;
+}
+.frame-2 {
+  flex-shrink: 0;
+  position: relative;
+  width: 28px;
+  height: 28px;
+  z-index: 1;
+}
+.icon {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  margin: 0.42px 0 0 -0.27px;
+  background: url(./assets/images/0db29dbf-8330-4db4-8519-03a6beb99bf6.png)
+    no-repeat center;
+  background-size: 100% 100%;
+  z-index: 2;
+}
+.phone {
+  flex-shrink: 0;
+  position: relative;
+  width: 107px;
+  font-family: Montserrat, var(--default-font-family);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: left;
+  text-overflow: initial;
+  white-space: nowrap;
+  letter-spacing: 0.26px;
+  z-index: 3;
+}
+.phone-3 {
+  position: relative;
+  color: #000000;
+  font-family: Montserrat, var(--default-font-family);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 20px;
+  text-align: left;
+  letter-spacing: 0.26px;
+}
+.phone-number {
+  position: relative;
+  color: #469ccc;
+  font-family: Montserrat, var(--default-font-family);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: left;
+  letter-spacing: 0.26px;
+}
+.frame-4 {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  gap: 15px;
+  position: relative;
+  width: 223px;
+  z-index: 4;
+}
+.frame-5 {
+  flex-shrink: 0;
+  position: relative;
+  width: 28px;
+  height: 28px;
+  z-index: 5;
+}
+.icon-6 {
+  position: relative;
+  width: 24.818px;
+  height: 22.75px;
+  margin: 2.625px 0 0 1.75px;
+  background: url(./assets/images/8fe30e6c-d961-4a5d-b338-c5f8eb0b0259.png)
+    no-repeat center;
+  background-size: 100% 100%;
+  z-index: 6;
+}
+.email {
+  flex-shrink: 0;
+  position: relative;
+  width: 180px;
+  font-family: Montserrat, var(--default-font-family);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: left;
+  text-overflow: initial;
+  white-space: nowrap;
+  letter-spacing: 0.26px;
+  z-index: 7;
+}
+.email-7 {
+  position: relative;
+  color: #000000;
+  font-family: Montserrat, var(--default-font-family);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 20px;
+  text-align: left;
+  letter-spacing: 0.26px;
+}
+.email-8 {
+  position: relative;
+  color: #469ccc;
+  font-family: Montserrat, var(--default-font-family);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: left;
+  letter-spacing: 0.26px;
+}

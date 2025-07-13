@@ -1,0 +1,184 @@
+<!-- QuickBook Modal -->
+<div class="modal fade" id="QuickBookModal" tabindex="-1" aria-labelledby="QuickBookModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-custom-width">
+    <div class="modal-content p-4">
+      <div class="d-flex justify-content-between align-items-center position-relative mb-3">
+        <h3 class="text-center mb-0 Our p-0" style="font-size: clamp(20px, 2vw, 35px); color: #4a4a4a; flex-grow: 1;">
+          Quick Book</h3>
+        <button type="button" class="btn" style="font-size: 1.5rem; color: #4a4a4a; padding: 0;"
+          data-bs-dismiss="modal">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <!-- Form -->
+      <form id="quickBookForm">
+        <div id="formFields">
+          <!-- <div class="mb-3">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-control" name="fullName" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" name="email" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Phone</label>
+            <input type="tel" class="form-control" name="phone" required>
+          </div> -->
+          <div class="mb-3">
+            <label class="form-label">What type of service you need?</label>
+            <select class="form-control" name="serviceCategory" required>
+              <option value="">Select service</option>
+              <option value="Construction">Construction</option>
+              <option value="Home Shifting">Home Shifting</option>
+              <option value="Solar Panel Installation">Solar Panel Installation</option>
+              <option value="Electrical Services">Electrical Services</option>
+              <option value="Fulfil Labour Requirements">Fulfil Labour Requirements</option>
+              <option value="Plumbing Services">Plumbing Services</option>
+            </select>
+          </div>
+          <!-- <div class="mb-3">
+            <label class="form-label">Describe what you need</label>
+            <input type="text" class="form-control" name="desc">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Location</label>
+            <input type="text" class="form-control" name="location" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Available Time</label>
+            <input type="datetime-local" class="form-control" name="availableTime" required>
+          </div> -->
+        </div>
+
+        <button type="button" id="estimateBtn" class="btn btn-site w-100">let Ai search for you</button>
+        <!--<div id="alertBox" class="alert d-none mt-3" role="alert"></div> -->
+      </form>
+      <!-- Service Providers List -->
+      <!-- Service Providers List -->
+      <div class="scrollable-providers mt-4">
+        <div id="providerList" class="row"></div>
+      </div>
+
+
+
+      <!-- Estimated Budget Display -->
+      <!-- <div id="budgetSection" class="mt-4 text-center" style="display: none;">
+        <h5 class="mb-3">Estimated Budget: <span id="budgetDisplay" class="fw-bold"></span> PKR</h5>
+        <button class="btn btn-success" id="confirmBookingBtn">Book Now</button>
+      </div>-->
+    </div>
+  </div>
+</div>
+
+<script>
+  // document.addEventListener("DOMContentLoaded", () => {
+  //   const estimateBtn = document.getElementById("estimateBtn");
+  //   const confirmBookingBtn = document.getElementById("confirmBookingBtn");
+  //   const budgetSection = document.getElementById("budgetSection");
+  //   const budgetDisplay = document.getElementById("budgetDisplay");
+  //   const alertBox = document.getElementById("alertBox");
+  //   const quickBookForm = document.getElementById("quickBookForm");
+
+  //   function showAlert(message, type = "info") {
+  //     alertBox.className = `alert alert-${type} alert-dismissible`;
+  //     alertBox.innerHTML = `
+  //       ${message}
+  //       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  //         <span aria-hidden="true">&times;</span>
+  //       </button>
+  //     `;
+  //     alertBox.classList.remove("d-none");
+  //   }
+
+  //   estimateBtn.addEventListener("click", async () => {
+  //     const formData = new FormData(quickBookForm);
+  //     const fullName = formData.get("fullName");
+  //     const email = formData.get("email");
+  //     const phone = formData.get("phone");
+  //     const location = formData.get("location");
+  //     const serviceCategory = formData.get("serviceCategory");
+  //     const desc = formData.get("desc");
+  //     const availableTime = formData.get("availableTime");
+
+  //     if (!fullName || !email || !phone || !location || !serviceCategory || !availableTime) {
+  //       showAlert("Please fill all required fields before estimating budget.", "warning");
+  //       return;
+  //     }
+
+  //     try {
+  //       const response = await fetch("/quickbook/estimate", {
+  //         method: "POST",
+  //         headers: { "Content-Type": "application/json" },
+  //         body: JSON.stringify({ fullName, email, phone, location, serviceCategory, desc, availableTime })
+  //       });
+
+  //       const data = await response.json();
+
+  //       if (data.success && data.estimatedBudget !== undefined) {
+  //         budgetDisplay.innerText = data.estimatedBudget;
+  //         budgetSection.style.display = "block";
+  //         estimateBtn.style.display = "none";
+  //         showAlert("✅ Estimated budget received successfully.", "success");
+  //       } else {
+  //         budgetSection.style.display = "none";
+  //         estimateBtn.style.display = "block";
+  //         showAlert(data.message || "⚠️ Budget estimation failed.", "danger");
+  //       }
+  //     } catch (err) {
+  //       showAlert("❌ Server error during estimation.", "danger");
+  //       console.error(err);
+  //     }
+  //   });
+
+  //   confirmBookingBtn.addEventListener("click", async () => {
+  //     const formData = new FormData(quickBookForm);
+  //     const bookingData = {
+  //       fullName: formData.get("fullName"),
+  //       email: formData.get("email"),
+  //       phone: formData.get("phone"),
+  //       location: formData.get("location"),
+  //       serviceCategory: formData.get("serviceCategory"),
+  //       desc: formData.get("desc"),
+  //       availableTime: formData.get("availableTime")
+  //     };
+
+  //     try {
+  //       const response = await fetch("/quickbook/confirm", {
+  //         method: "POST",
+  //         headers: { "Content-Type": "application/json" },
+  //         body: JSON.stringify(bookingData)
+  //       });
+
+  //       const data = await response.json();
+
+  //       if (data.success) {
+  //         showAlert(`✅ ${data.message}`, "success");
+  //         setTimeout(() => location.reload(), 3000);
+  //       } else {
+  //         showAlert(data.message || "❌ Booking failed.", "danger");
+  //       }
+  //     } catch (err) {
+  //       showAlert("❌ Server error during booking.", "danger");
+  //       console.error(err);
+  //     }
+  //   });
+  // });
+
+  
+  document.getElementById("estimateBtn").addEventListener("click", () => {
+    const formData = new FormData(document.getElementById("quickBookForm"));
+    const category = formData.get("serviceCategory");
+
+    if (!category) {
+      alert("Please select a service category.");
+      return;
+    }
+
+    window.location.href = `/providers?category=${encodeURIComponent(category)}`;
+  });
+
+
+
+</script>

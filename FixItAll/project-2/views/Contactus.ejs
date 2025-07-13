@@ -1,0 +1,176 @@
+<!doctype html>
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/stylesheets/project.css">
+    <link rel="stylesheet" href="/stylesheets/contactnav.css">
+
+    <!-- <link rel="stylesheet" href="/stylesheets/contact.css"> -->
+</head>
+
+<body>
+    <%- include('partials/header') %>
+        <%- include('partials/modals/createAccountModal') %>
+            <%- include('partials/modals/loginAsModal') %>
+                <%- include('partials/modals/customerLoginModal') %>
+                    <%- include('partials/modals/customerSignUpModal') %>
+                        <%- include('partials/modals/customerTerms&ConditionModal') %>
+                            <%- include('partials/modals/serviceLoginModal') %>
+                                <%- include('partials/modals/serviceSignUpModal') %>
+                                    <%- include('partials/modals/serviceTerms&ConditionModal') %>
+
+                                        <div class="container-fluid row mapsection secondsection">
+
+                                            <div class="container-fluid mapsection">
+                                                <div class="row align-items-center">
+                                                    <!-- Form Section -->
+                                                    <div class="col-lg-6 d-flex justify-content-center">
+                                                        <div class="form-container">
+                                                            <h3 class="Our">Get in <span class="services">Touch</span>
+                                                            </h3>
+                                                            <form>
+                                                                <div class="form-group">
+                                                                    <input type="text" class="form-control"
+                                                                        placeholder="Name*" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="email" class="form-control"
+                                                                        placeholder="Email">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <input type="tel" class="form-control"
+                                                                        placeholder="Phone number" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <select class="form-control">
+                                                                        <option value="" selected disabled>How did you
+                                                                            find us?</option>
+                                                                        <option value="Google">Google</option>
+                                                                        <option value="Social Media">Social Media
+                                                                        </option>
+                                                                        <option value="Referral">Referral</option>
+                                                                        <option value="Other">Other</option>
+                                                                    </select>
+                                                                </div>
+
+
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">SEND</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Map Section -->
+                                                    <div class="col-lg-6 position-relative">
+                                                        <div class="blue-box">
+
+                                                        </div>
+                                                        <iframe
+                                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3326.1657156634956!2d71.44331361123211!3d33.52307684537531!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38d8ec241a467237%3A0xf7409abf0918f110!2sKohat%20University%20of%20Science%20and%20Technology%20Kohat%20(%20KUST%20)!5e0!3m2!1sen!2s!4v1721939735208!5m2!1sen!2s"
+                                                            width="445" height="841" style="border:0;" allowfullscreen
+                                                            loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                                                            class="map-iframe"></iframe>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="container-fluid bluesection abovefooter ">
+
+                                        </div>
+
+
+
+
+
+
+
+
+                                        <div class="container-fluid lastsection">
+                                            <div class="row">
+                                                <div class="col-lg-6"><img src="./IMAGES/logo.png" alt
+                                                        class="img-fluid footerimg">
+                                                    <p class="parag ">Get professional repair services in
+                                                        Kohat, Pakistan.
+                                                        Experts are ready to solve your home issues</p>
+                                                    <div class="container mt-4">
+                                                        <div class="row">
+                                                            <!-- <div class="col-lg-12 ml-4">
+                                <div class="social-link">
+                                    <a href="https://www.facebook.com/yourprofile" target="_blank">
+                                        <img src="./IMAGES/social (2).png" class="social-icon" alt="Facebook">
+                                    </a>
+                                    <a href="https://www.twitter.com/yourprofile" target="_blank">
+                                        <img src="./IMAGES/twitter.png" class="social-icon" alt="Twitter">
+                                    </a>
+                                    <a href="https://www.instagram.com/yourprofile" target="_blank">
+                                        <img src="./IMAGES/social (2).png" class="social-icon" alt="Instagram">
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/yourprofile" target="_blank">
+                                        <img src="./IMAGES/social (2).png" class="social-icon" alt="LinkedIn">
+                                    </a>
+                                </div>
+
+                            </div> -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-6 companydiv">
+                                                    <div class="container mt-4">
+                                                        <div class="row">
+                                                            <div class="mr-4 pr-4 col-lg-12">
+                                                                <h3 class="company h3">Company</h3>
+
+                                                                <button class="stretched-button"
+                                                                    onclick="window.location.href='/About';">
+                                                                    <span>About Us</span>
+                                                                    <span class="arrow">&gt;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="col-lg-12">
+
+                                                                <button class="stretched-button active"
+                                                                    onclick="window.location.href='/FAQ';">
+                                                                    <span>FAQs</span>
+                                                                    <span class="arrow">&gt;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="col-lg-12">
+
+                                                                <button class="stretched-button"
+                                                                    onclick="window.location.href='/Contact';">
+                                                                    <span>Contact Us</span>
+                                                                    <span class="arrow">&gt;</span>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class=" image-container container-fluid">
+                                            <img src="./IMAGES/footer1.png" alt="Image 1">
+                                            <img src="./IMAGES/footer2.png" alt="Image 2">
+                                            <img src="./IMAGES/footer3.png" alt="Image 3">
+                                        </div>
+                                        <script src="/js/script.js"></script>
+                                        <!-- Bootstrap 5 Bundle (Includes Popper.js) -->
+                                        <script
+                                            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

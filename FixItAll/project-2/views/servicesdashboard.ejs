@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="/stylesheets/servicesdeshboard.css" />
+    <style>
+        /* Responsive + tab-based styling included below */
+    </style>
+</head>
+
+<body>
+    <div class="d-flex flex-column flex-md-row">
+
+        <!-- Sidebar -->
+        <nav class="sidebar bg-white shadow-sm p-3">
+            <div class="sidebar-logo mb-4 font-weight-bold">EZY & FIX</div>
+            <ul class="nav flex-column sidebar-nav nav-pills" id="dashboardTabs">
+                <p>Welcome <%= serviceProvider.fullName %>!</p>
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="pill" href="#dashboard"><i
+                            class="bi bi-speedometer"></i>Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="pill" href="#book_service"><i class="bi bi-tools"></i>Book a
+                        Service</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="pill" href="#services"><i class="bi bi-tools"></i>Services</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="pill" href="#customers"><i class="bi bi-people"></i>Customers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="pill" href="#help"><i class="bi bi-question-circle"></i>Help</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/customers/logout"><i class="bi bi-box-arrow-right"></i> Logout</a>
+                  </li>
+                  
+            </ul>
+        </nav>
+
+        <!-- Content -->
+        <div class="content flex-fill p-4">
+
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="dashboard">
+                    <div class="dashboard-section">
+                        <h2 class="mb-4">Dashboard</h2>
+
+                        <!-- Quick Stats Cards -->
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-3">
+                                <div class="card text-white bg-primary h-100">
+                                    <div class="card-body d-flex flex-column justify-content-between"
+                                        style="min-height: 120px;">
+                                        <h5 class="card-title">Total Bookings</h5>
+                                        <p class="card-text fs-4 mb-0">56</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card text-white bg-success h-100">
+                                    <div class="card-body d-flex flex-column justify-content-between"
+                                        style="min-height: 120px;">
+                                        <h5 class="card-title">Completed Services</h5>
+                                        <p class="card-text fs-4 mb-0">48</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card text-white bg-warning h-100">
+                                    <div class="card-body d-flex flex-column justify-content-between"
+                                        style="min-height: 120px;">
+                                        <h5 class="card-title">Upcoming Appointements</h5>
+                                        <p class="card-text fs-4 mb-0">3</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card text-white bg-danger h-100">
+                                    <div class="card-body d-flex flex-column justify-content-between"
+                                        style="min-height: 120px;">
+                                        <h5 class="card-title">Cancellations</h5>
+                                        <p class="card-text fs-4 mb-0">2</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Notifications -->
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <div class="card h-100">
+                                    <div class="card-header bg-light fw-bold">Notifications</div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">You have 1 new booking request</li>
+                                        <li class="list-group-item">Customer Jane left a 5-star review</li>
+                                        <li class="list-group-item">1 service marked as completed</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- Profile Completion -->
+                            <div class="col-md-6">
+                                <div class="card h-100">
+                                    <div class="card-header bg-light fw-bold">Profile Completion</div>
+                                    <div class="card-body">
+                                        <p>You're 80% done! Complete your profile to get more bookings.</p>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-success" role="progressbar" style="width: 80%;">
+                                                80%
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recent Activity Table -->
+                        <div class="card">
+                            <div class="card-header bg-light fw-bold">Recent Bookings</div>
+                            <div class="card-body p-0">
+                                <table class="table table-striped mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Customer</th>
+                                            <th>Service</th>
+                                            <th>Status</th>
+                                            <th>Rating</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>May 5, 2025</td>
+                                            <td>Jane Cooper</td>
+                                            <td>Plumbing</td>
+                                            <td><span class="badge bg-success">Completed</span></td>
+                                            <td>5 ★</td>
+                                        </tr>
+                                        <tr>
+                                            <td>May 4, 2025</td>
+                                            <td>John Doe</td>
+                                            <td>Electrician</td>
+                                            <td><span class="badge bg-warning text-dark">Upcoming</span></td>
+                                            <td>-</td>
+                                        </tr>
+                                        <tr>
+                                            <td>May 2, 2025</td>
+                                            <td>Mary Smith</td>
+                                            <td>Cleaning</td>
+                                            <td><span class="badge bg-danger">Cancelled</span></td>
+                                            <td>-</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="tab-pane fade" id="book_service">
+                    <form id="customerSignupForm">
+                        <div class="mb-3">
+                            <label for="fullName" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="fullName" placeholder="Enter your full name"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone</label>
+                            <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">What type of service you
+                                need?</label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option>Construction</option>
+                                <option>Home Shifting</option>
+                                <option>Solar Panel Installation</option>
+                                <option>Electrical Services</option>
+                                <option>Fulfil Labour Requirements</option>
+                                <option>Plumbing Services</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Describe what you need
+                                in detail.
+                                <small class="text-muted">(Optional)</small></label>
+                            <input type="text" class="form-control" id="confirmPassword">
+                        </div>
+                        <div class="mb-3">
+                            <label for="location" class="form-label">Location</label>
+                            <input type="text" class="form-control" id="location" placeholder="Enter your location"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="availableTime" class="form-label">What is your available
+                                time?</label>
+                            <input type="datetime-local" class="form-control" id="availableTime">
+                        </div>
+
+                        <button type="submit" class="btn btn-site w-100" style="font-weight: normal;">Book
+                            Now</button>
+                    </form>
+                </div>
+                <div class="tab-pane fade" id="services">
+                    <h2>All Services Providers</h2>
+                    <p class="topbar-welcome">Here is the information about all your orders</p>
+                    <div class="table-container">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Services Provider Name</th>
+                                    <th>Average Rating</th>
+                                    <th>Completed Services</th>
+                                    <th>Cancellation Rate</th>
+                                    <th>Service</th>
+                                    <th>Individual</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Jane Cooper</td>
+                                    <td>6.5/10</td>
+                                    <td>14 out of 16</td>
+                                    <td>2 out of 16</td>
+                                    <td>Plumber</td>
+                                    <td><span class="status-good">Good</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Floyd Miles</td>
+                                    <td>8.5/10</td>
+                                    <td>14 out of 16</td>
+                                    <td>2 out of 16</td>
+                                    <td>Plumber</td>
+                                    <td><span class="status-bad">Bad</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Ronald Richards</td>
+                                    <td>9.5/10</td>
+                                    <td>14 out of 16</td>
+                                    <td>2 out of 16</td>
+                                    <td>Plumber</td>
+                                    <td><span class="status-bad">Bad</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Marvin McKinney</td>
+                                    <td>8.5/10</td>
+                                    <td>14 out of 16</td>
+                                    <td>2 out of 16</td>
+                                    <td>Plumber</td>
+                                    <td><span class="status-good">Good</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Jerome Bell</td>
+                                    <td>6.5/10</td>
+                                    <td>14 out of 16</td>
+                                    <td>2 out of 16</td>
+                                    <td>Plumber</td>
+                                    <td><span class="status-good">Good</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Kathryn Murphy</td>
+                                    <td>8.5/10</td>
+                                    <td>14 out of 16</td>
+                                    <td>2 out of 16</td>
+                                    <td>Plumber</td>
+                                    <td><span class="status-good">Good</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Jacob Jones</td>
+                                    <td>6.5/10</td>
+                                    <td>14 out of 16</td>
+                                    <td>2 out of 16</td>
+                                    <td>Plumber</td>
+                                    <td><span class="status-good">Good</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Kristin Watson</td>
+                                    <td>8.5/10</td>
+                                    <td>14 out of 16</td>
+                                    <td>2 out of 16</td>
+                                    <td>Plumber</td>
+                                    <td><span class="status-bad">Bad</span></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Jane Cooper</td>
+                                    <td>6.5/10</td>
+                                    <td>14/16</td>
+                                    <td>2/16</td>
+                                    <td>Plumber</td>
+                                    <td><span class="status-good">Good</span></td>
+                                </tr>
+                                <!-- Other rows ... -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="customers">
+                    <h2>Customers</h2>
+                    <p>Customer-related data will appear here.</p>
+                </div>
+
+                <div class="tab-pane fade" id="help">
+                    <h2>Help</h2>
+                    <p>Find frequently asked questions and support options here.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const tabLinks = document.querySelectorAll('#dashboardTabs .nav-link');
+        tabLinks.forEach(link => {
+            link.addEventListener('shown.bs.tab', function (e) {
+                document.title = e.target.textContent.trim() + " | Dashboard";
+            });
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html> 

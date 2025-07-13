@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer Dashboard – EZY & FIX</title>
+
+    <!-- CSS: Bootstrap, Icons, Leaflet, Leaflet Search -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+
+    <style>
+        .sidebar {
+            min-width: 250px;
+        }
+
+        #mapid {
+            height: 350px;
+            width: 100%;
+            border: 1px solid #ccc;
+            display: block;
+            /* ✅ Ensures it's not inline or collapsed */
+        }
+
+
+        .btn-block {
+            width: 100%;
+        }
+
+        .mt-4 {
+            margin-top: 1.5rem !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="d-flex flex-column flex-md-row">
+        <!-- Sidebar -->
+        <nav class="sidebar bg-white shadow-sm p-3">
+            <div class="sidebar-logo mb-4 font-weight-bold">EZY & FIX</div>
+            <ul class="nav flex-column sidebar-nav nav-pills" id="dashboardTabs">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="pill" href="#dashboard">
+                        <i class="bi bi-speedometer"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item mt-2">
+                    <a class="btn btn-primary btn-block" data-toggle="pill" href="#booking">
+                        <i class="bi bi-plus-circle"></i> Book a Service
+                    </a>
+                </li>
+                <li class="nav-item mt-4">
+                    <a class="nav-link text-danger" href="/customers/logout">
+                        <i class="bi bi-box-arrow-right"></i> Logout
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="content flex-fill p-4">
+            <div class="tab-content">
+                <!-- Dashboard Tab -->
+                <div class="tab-pane fade show active" id="dashboard">
+                    <h3 class="mb-4">Welcome, <%= user.fullName %> 👋</h3>
+                    <div class="alert alert-info d-flex align-items-center">
+                        <i class="bi bi-lightbulb-fill mr-2"></i>
+                        You're all set! Start by booking your first service.
+                    </div>
+                    <div class="text-center my-5">
+                        <i class="bi bi-calendar-x display-1 text-secondary"></i>
+                        <h4>No Bookings Yet</h4>
+                        <p class="text-muted">Once you book a service, your schedule will appear here.</p>
+                        <a href="#booking" class="btn btn-primary mt-3" data-toggle="pill">
+                            <i class="bi bi-plus-circle"></i> Book a Service
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Booking Tab -->
+                <div class="tab-pane fade" id="booking">
+                    <h3 class="mb-4">Book a Service</h3>
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <div id="locationError" class="alert alert-danger d-none" role="alert">
+    📍 Please mark your location on the map before booking.
+</div>
+
+                            <form id="bookingForm" action="/quickBook/confirm" method="POST">
+
+                                <!-- Step 1: User Info -->
+                                <h5>Your Info</h5>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>Full Name</label>
+                                        <input type="text" class="form-control" name="fullName"
+                                            value="<%= user.fullName %>" readonly>
+                                    </div>
+                                    <input type="hidden" name="email" value="<%= user.email %>">
+
+                                    <div class="form-group col-md-6">
+                                        <label>Phone</label>
+                                        <input type="tel" class="form-control" name="phone" value="<%= user.phone %>"
+                                            readonly>
+                                    </div>
+                                </div>
+
+                                <!-- Step 2: Service Details -->
+                                <h5 class="mt-4">Service Details</h5>
+                                <div class="form-group">
+                                    <label>What service do you need?</label>
+                                    <select class="form-control" name="serviceCategory" required>
+                                        <option value="">-- Select a service --</option>
+                                        <option>Construction</option>
+                                        <option>Home Shifting</option>
+                                        <option>Solar Panel Installation</option>
+                                        <option>Electrical Services</option>
+                                        <option>Labour Requirement</option>
+                                        <option>Plumbing Services</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Details (optional)</label>
+                                    <textarea class="form-control" name="desc" rows="3"
+                                        placeholder="E.g., Fix kitchen sink"></textarea>
+                                </div>
+
+                                <!-- Step 3: Location -->
+                                <!-- Step 3: Location -->
+                                <h5 class="mt-4">Location</h5>
+                                <p class="text-muted">Click on the map, search, or type to set your location:</p>
+
+                                <!-- Visible address bar -->
+                                <input type="text" id="locationInput" name="location" class="form-control mb-2"
+                                    placeholder="Search or click on map to select location" required>
+
+
+                                <!-- ✅ ADD THIS LINE: Leaflet map container -->
+                                <div id="mapid" class="mb-3"></div>
+
+                                <!-- Hidden coordinate fields -->
+                                <input type="hidden" name="latitude" id="latitude" />
+                                <input type="hidden" name="longitude" id="longitude" />
+
+                                <!-- Step 4: When -->
+                                <div class="form-group mt-4">
+                                    <label>Available Time</label>
+                                    <input type="datetime-local" class="form-control" name="availableTime" required>
+                                </div>
+
+                                <!-- Submit -->
+                                <button type="submit" class="btn btn-success btn-block mt-4">
+                                    <i class="bi bi-check-circle"></i> Confirm Booking
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS Libraries -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+    <!-- Map + Search + Manual Input Logic -->
+    <script>
+        const map = L.map('mapid', {
+            minZoom: 13,
+            maxZoom: 18,
+            maxBounds: L.latLngBounds(
+                [33.5600, 71.3950],  // SW Kohat
+                [33.6450, 71.4950]   // NE Kohat
+            )
+        }).setView([33.5886, 71.4425], 14);  // Center Kohat
+
+        // Ensure map resizes correctly when tab is shown
+        $('a[data-toggle="pill"][href="#booking"]').on('shown.bs.tab', function () {
+            setTimeout(() => {
+                map.invalidateSize();
+            }, 300);
+        });
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        const geocoder = L.Control.geocoder({
+            geocoder: L.Control.Geocoder.nominatim(),
+            defaultMarkGeocode: false
+        }).on('markgeocode', e => {
+            const { center, name } = e.geocode;
+            placeMarker(center);
+            setLocationInputs(center, name);
+        }).addTo(map);
+
+        let marker;
+
+        function placeMarker(latlng) {
+            if (marker) {
+                marker.setLatLng(latlng);
+            } else {
+                marker = L.marker(latlng).addTo(map);
+            }
+        }
+
+        function setLocationInputs(latlng, name = '') {
+            const lat = latlng.lat;
+            const lng = latlng.lng;
+            document.getElementById('latitude').value = lat;
+            document.getElementById('longitude').value = lng;
+
+            const locationInput = document.getElementById('locationInput');
+
+            if (name && name.length > 0) {
+                locationInput.value = name;
+            } else {
+                // Reverse geocode if name not provided
+                fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data && data.display_name) {
+                            locationInput.value = data.display_name;
+                        } else {
+                            locationInput.value = '';
+                            alert('⚠️ Address not found for this location.');
+                        }
+                    })
+                    .catch(err => {
+                        console.error('❌ Reverse geocoding failed:', err);
+                        locationInput.value = '';
+                        alert('Error fetching address. Try again.');
+                    });
+            }
+        }
+
+        // Map click handler
+        map.on('click', e => {
+            placeMarker(e.latlng);
+            setLocationInputs(e.latlng);
+        });
+
+        // When user types a location manually
+        document.getElementById('locationInput').addEventListener('change', e => {
+            let query = e.target.value.trim();
+
+            // Add Kohat for more accurate local geocoding
+            if (!query.toLowerCase().includes('kohat')) {
+                query += ', Kohat, Khyber Pakhtunkhwa, Pakistan';
+            }
+
+            geocoder.options.geocoder.geocode(query, results => {
+                if (results && results.length > 0) {
+                    const result = results[0];
+                    map.setView(result.center, 15);
+                    placeMarker(result.center);
+                    setLocationInputs(result.center, result.name || query);
+                } else {
+                    alert('⚠️ Location not found. Try being more specific.');
+                }
+            });
+        });
+
+        // Tab title change handler
+        document.querySelectorAll('#dashboardTabs .nav-link').forEach(link => {
+            link.addEventListener('shown.bs.tab', e => {
+                document.title = e.target.textContent.trim() + ' | EZY & FIX';
+            });
+        });
+    </script>
+
+</body>
+
+
+</html>

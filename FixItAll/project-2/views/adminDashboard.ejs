@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .card-stat {
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.05);
+    }
+    .table-actions button {
+      margin-right: 4px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Topbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-4">
+  <a class="navbar-brand fw-bold" href="#">EZY & FIX Admin</a>
+  <div class="ms-auto d-flex align-items-center">
+    <form class="d-flex" action="/admin/dashboard" method="GET">
+      <input class="form-control me-2" name="search" type="search" placeholder="Search providers..." aria-label="Search">
+    </form>
+    <a href="/owners/admin/logout" class="btn btn-outline-danger btn-sm ms-3">Logout</a>
+  </div>
+</nav>
+
+<div class="container-fluid mt-4">
+  <!-- Stats -->
+ <div class="row mb-4">
+  <div class="col-md-4">
+    <div class="card bg-primary text-white">
+      <div class="card-body">
+        <h5>Total Bookings</h5>
+        <h3><%= totalBookings %></h3>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card bg-success text-white">
+      <div class="card-body">
+        <h5>Completed</h5>
+        <h3><%= completed %></h3>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card bg-warning text-white">
+      <div class="card-body">
+        <h5>Upcoming</h5>
+        <h3><%= upcoming %></h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-4">
+  <div class="col-md-4">
+    <div class="card bg-danger text-white">
+      <div class="card-body">
+        <h5>Cancelled</h5>
+        <h3><%= cancelled %></h3>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card bg-info text-white">
+      <div class="card-body">
+        <h5>Service Providers</h5>
+        <h3><%= totalProviders %></h3>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card bg-dark text-white">
+      <div class="card-body">
+        <h5>Customers</h5>
+        <h3><%= totalCustomers %></h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Providers Table -->
+  <div class="card mb-4">
+    <div class="card-header fw-bold">Service Providers</div>
+    <div class="card-body p-0">
+      <table class="table table-hover table-striped mb-0">
+        <thead class="table-light">
+          <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Location</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% providers.forEach(p => { %>
+          <tr>
+            <td><%= p.fullName %></td>
+            <td><%= p.serviceCategory %></td>
+            <td><%= p.address %></td>
+            <td><%= p.email %></td>
+            <td><%= p.phone %></td>
+            <td class="table-actions">
+              <form action="/admin/provider/delete/<%= p._id %>" method="POST" class="d-inline" onsubmit="return confirm('Delete this provider?')">
+                <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
+              </form>
+              <!-- Add Suspend/View if needed -->
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Customers Table -->
+  <div class="card mb-4">
+    <div class="card-header fw-bold">Customers</div>
+    <div class="card-body p-0">
+      <table class="table table-hover table-striped mb-0">
+        <thead class="table-light">
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% customers.forEach(c => { %>
+          <tr>
+            <td><%= c.fullName %></td>
+            <td><%= c.email %></td>
+            <td><%= c.phone %></td>
+            <td class="table-actions">
+              <form action="/admin/customer/delete/<%= c._id %>" method="POST" class="d-inline" onsubmit="return confirm('Delete this customer?')">
+                <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
+              </form>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

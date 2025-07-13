@@ -1,0 +1,65 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.sidebar {
+    background-color: #fff !important;
+    width: 250px;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-logo {
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #141618;
+    /* Example primary color */
+}
+
+.sidebar-nav .nav-link {
+    padding: 10px 15px;
+    color: #495057;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.topbar-icons>* {
+    margin-left: 10px;
+    /* For notification and profile icons */
+    font-size: 1.2rem;
+    /* Example icon size */
+    color: #495057;
+}
+
+
+
+
+
+.sidebar-nav .nav-link.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.sidebar-nav .nav-link i {
+    margin-right: 10px;
+    /* For icons if you were to add them */
+}
+
+#page-content-wrapper {
+    min-height: 100vh;
+}

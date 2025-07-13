@@ -1,0 +1,211 @@
+.body {
+    background: #dde6ec;
+}
+
+.homelink {
+    color: #469DCD !important;
+    font-weight: 500;
+
+
+}
+
+.FAQs {
+    color: #469DCD;
+    font-family: "Josefin Sans";
+    font-size: 66px;
+    padding-top: 40px;
+    padding-bottom: 100px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 4.8px;
+    padding-left: 80px;
+}
+
+.spanFAQs {
+    color: #0D121C;
+
+}
+
+.bluesection {
+    height: 270vh;
+    background-color: #469DCD;
+
+}
+
+.commonquestion {
+    color: #FFF;
+    font-family: "Josefin Sans";
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 4.8px;
+
+    text-align: center;
+    padding-bottom: 80px;
+}
+
+.plumbing {
+    color: #FFF;
+    font-family: Roboto;
+    font-size: 38px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    padding-left: 55px;
+}
+
+.para {
+    color: #FFF;
+    padding-left: 55px;
+
+    font-family: Roboto;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+
+.line {
+    width: 90vw;
+    height: 1px;
+    background: #FFF;
+    margin-bottom: 80px;
+    margin-top: 20px;
+}
+
+.image-container {
+    position: relative;
+    /* border: 3px solid pink; */
+    width: 98.5vw;
+    height: 10vh;
+    /* Adjust the height as needed */
+}
+
+.image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    /* Adjust the opacity as needed */
+    background: linear-gradient(to bottom,
+        );
+}
+
+.image-container img:nth-child(1) {
+    z-index: 1;
+}
+
+.image-container img:nth-child(2) {
+    z-index: 2;
+}
+
+.image-container img:nth-child(3) {
+    z-index: 3;
+}
+
+.stretched-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    padding: 10px 20px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #fff;
+    font-family: Roboto;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: none;
+
+}
+
+.stretched-button:hover {
+    background-color: #e2e6ea;
+}
+
+.stretched-button:hover {
+    background-color: #e2e6ea;
+}
+
+.stretched-button .arrow {
+    font-size: 20px;
+}
+
+.footerimg {
+    width: 300px;
+    height: 100px;
+    margin-bottom: 10px;
+    /* border: #469DCD 2px solid; */
+
+    /* flex-shrink: 0; */
+}
+
+.parag {
+    width: 300px;
+    color: #000;
+    font-family: "Inria Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    margin-left: 5% !important;
+    margin-top: -15px;
+    line-height: normal;
+    /* border: #469DCD 2px solid; */
+}
+
+.company {
+    color: #469DCD;
+    font-family: Roboto;
+}
+
+
+@media (min-width: 375px) and (max-width: 667px) {
+    .logoimage {
+        height: 100px;
+        /* Adjust logo height as needed */
+        width: 150px;
+
+    }
+
+    .FAQs {
+        color: #469DCD;
+        font-family: "Josefin Sans";
+        font-size: 36px;
+        padding-top: 40px;
+        padding-bottom: 100px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        letter-spacing: 4.8px;
+        padding-left: 10px;
+    }
+
+
+
+    .spanFAQs {
+        color: #0D121C;
+
+    }
+
+    .bluesection {
+        height: 435vh;
+        background-color: #469DCD;
+
+    }
+
+    h1 {
+        font-size: medium;
+    }
+}
+
+/* Active state styling */
+.active {
+    background-color: #007bff !important;
+    color: #fff;
+}

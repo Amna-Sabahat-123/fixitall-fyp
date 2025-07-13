@@ -1,0 +1,542 @@
+.body {
+    background: #dde6ec;
+}
+
+
+.teamlink {
+    color: #469DCD !important;
+    font-weight: 500;
+}
+
+.Teamnav {
+    color: #469DCD !important;
+}
+
+
+.bluesection {
+    height: 15vh;
+    background-color: #469DCD;
+    align-items: center;
+
+}
+
+.heading {
+    color: #0D121C;
+    font-family: "Josefin Sans";
+    font-size: 70px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 4.8px;
+}
+
+.team {
+    color: #0D121C;
+}
+
+.meet {
+    color: #FFF;
+}
+
+.founder {
+
+    margin-bottom: 10px;
+}
+
+.card {
+    border: none;
+    align-items: center;
+    /* border:#000 solid 4px; */
+
+    text-align: center;
+
+    /* padding: 10%; */
+    /* margin-block:10%; */
+
+}
+
+.containers {
+    width: 60vw;
+}
+
+.profile-card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 100%;
+    /* Make cards take full width of their column */
+    max-width: 350px;
+    /* Optional: Set a maximum width for larger screens */
+    margin: 0 auto;
+    /* Center the card within the column */
+}
+
+.profile-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card-body {
+    padding: 20px;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.card-subtitle {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+/* Responsive layout adjustments */
+.row.justify-content-md-around {
+    justify-content: center;
+    /* Default to center on smaller screens */
+}
+
+@media (min-width: 768px) {
+    .row.justify-content-md-around {
+        justify-content: space-around;
+        /* Space around on medium and larger screens */
+    }
+}
+
+.col-md-4 {
+    display: flex;
+    /* Enable flexbox for vertical centering of content if needed */
+    flex-direction: column;
+}
+
+.designation1 {
+    padding-left: 20rem;
+}
+
+.designation {
+    padding-left: 20rem;
+}
+
+.designation22 {
+    padding-right: 20rem;
+}
+
+.designation2 {
+    padding-right: 20rem;
+}
+
+.CARDS-COTAINER .card-img-top {
+    object-fit: contain;
+    /* Fit image within the box without cropping */
+    height: 550px;
+    /* Adjust height to make the image fit the shorter card */
+    width: 80%;
+    /* Make the image take full width of the card */
+}
+
+/* Style for the card body */
+.CARDS-COTAINER .card-body {
+    padding: 10px;
+    /* Adjust padding for the shorter card */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Center the text vertically */
+    text-align: center;
+    /* Center the text horizontally */
+    height: calc(100% - 150px);
+    /* Adjust height to fit remaining space */
+}
+
+/* Optional: Limit the card title and text length */
+.CARDS-COTAINER .card-title {
+    font-size: 1.1rem;
+    /* Adjust the font size if needed */
+    margin-bottom: 5px;
+    /* Space below the title */
+    color: #000;
+    font-family: "Inria Serif";
+    font-size: 3rem;
+    font-style: normal;
+    text-align: center;
+    font-weight: 700;
+    line-height: 1.125rem;
+    padding-bottom: 2rem;
+    text-transform: capitalize;
+}
+
+.CARDS-COTAINER .card-text {
+    font-size: 0.9rem;
+    /* Adjust the font size if needed */
+    color: #000;
+    font-family: "Inria Serif";
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.125rem;
+    /* 56.25% */
+    text-transform: capitalize;
+
+    .bluesection {
+        height: 20vh;
+        background-color: #469DCD;
+        align-items: center;
+    }
+
+    /* blue section */
+    .contactme {
+        /* border: #007bff 2PX SOLID; */
+        height: 3em;
+        width: 15em;
+        font-size: larger;
+        font-family: "Josefin Sans";
+        font-weight: 800;
+        line-height: normal;
+        text-transform: capitalize;
+        border-radius: 5rem;
+        border: none;
+        background: #FFF;
+        color: #007bff;
+    }
+
+    /* footer   */
+
+
+
+    .image-container {
+        position: relative;
+        /* border: 3px solid pink; */
+        width: 98.5vw;
+        height: 10vh;
+        /* Adjust the height as needed */
+    }
+
+    .image-container img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        /* Adjust the opacity as needed */
+        background: linear-gradient(to bottom,
+            );
+    }
+
+    .image-container img:nth-child(1) {
+        z-index: 1;
+    }
+
+    .image-container img:nth-child(2) {
+        z-index: 2;
+    }
+
+    .image-container img:nth-child(3) {
+        z-index: 3;
+    }
+
+    .stretched-button {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 50%;
+        padding: 10px 20px;
+        text-align: left;
+        font-size: 16px;
+        font-weight: bold;
+        background-color: #fff;
+        font-family: Roboto;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        border: none;
+
+    }
+
+    .stretched-button:hover {
+        background-color: #e2e6ea;
+    }
+
+    .stretched-button .arrow {
+        font-size: 20px;
+    }
+
+    .footerimg {
+        width: 300px;
+        height: 170px;
+        /* border: #469DCD 2px solid; */
+
+        /* flex-shrink: 0; */
+    }
+
+    .parag {
+        width: 300px;
+        color: #000;
+        font-family: "Inria Sans";
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        margin-left: 5% !important;
+        margin-top: -15px;
+        line-height: normal;
+        /* border: #469DCD 2px solid; */
+    }
+
+    .social-link {
+        margin-left: 5% !important;
+
+    }
+
+    .social-icon {
+        box-shadow: 5px 5px 10px rgba(129, 121, 121, 0.5);
+
+        font-size: 4px;
+    }
+
+    .f,
+    .yu1,
+    .yu2,
+    .yu {
+        height: 60px !important;
+        width: 60px !important;
+    }
+
+    .company {
+        color: #469DCD;
+
+        font-family: Roboto;
+    }
+
+    .companydiv {
+        pa-left: 10px;
+
+    }
+
+
+
+    /* Responsive styles */
+
+    /* Small screen (sm) */
+    @media (max-width: 575px) {
+        .bluesection {
+
+            height: 15vh;
+            font-size: 1.2rem;
+        }
+    }
+
+    /* Medium screen (md) */
+    @media (min-width: 576px) and (max-width: 767px) {
+        .bluesection {
+            height: 18vh;
+            font-size: 1.5rem;
+        }
+    }
+
+    @media (min-width: 375px) and (max-width: 576px) {
+        .bluesection {
+            margin-top: 50px;
+            height: 30vh;
+            font-size: 0.9rem;
+        }
+    }
+
+    /* Large screen (lg) */
+    @media (min-width: 768px) and (max-width: 991px) {
+        .bluesection {
+            height: 20vh;
+            font-size: 1.8rem;
+        }
+    }
+
+    /* Extra large screen (xl) */
+    @media (min-width: 992px) {
+        .bluesection {
+            height: 25vh;
+            font-size: 2.2rem;
+        }
+    }
+
+    /* Style for the card container */
+
+}
+
+@media (min-width: 365px) and (max-width: 667px) {
+    .Card-Image-1 {
+        padding-left: 0 !important;
+    }
+
+    .Card-Image-2 {
+        padding-right: 0 !important;
+
+    }
+
+    .designation1 {
+        padding-left: 0;
+    }
+
+    .designation {
+        padding-left: 0;
+    }
+
+    .designation22 {
+        padding-right: 0;
+    }
+
+    .designation2 {
+        padding-right: 0;
+    }
+
+    .bluesection {
+        height: 15vh;
+        background-color: #469DCD;
+        align-items: center;
+
+    }
+
+    .card-title {
+        /* margin-bottom: 10px; Space below the title */
+        color: #000;
+        font-family: "Inria Serif";
+        font-size: 1rem !important;
+        font-weight: 300;
+        line-height: 1.15rem;
+        /* padding-bottom: 1rem; */
+        text-transform: capitalize;
+    }
+
+    .card-text {
+        font-size: 0.9rem;
+        /* Adjust the font size if needed */
+        color: #000;
+        font-family: "Inria Serif";
+        font-size: 0.9rem;
+        font-style: normal;
+        font-weight: 200;
+        line-height: 1.15rem;
+        /* 56.25% */
+        text-transform: capitalize;
+    }
+
+    .meet,
+    .team {
+        font-size: medium;
+    }
+
+    .logoimage {
+        height: 60px;
+        /* Adjust logo height as needed */
+        margin-right: 0px;
+        width: 50vw;
+
+    }
+
+}
+
+.contact-info i {
+    font-size: 2rem;
+}
+
+.contact-info p {
+    margin-bottom: 0;
+    font-size: 1rem;
+}
+
+.image-container {
+    position: relative;
+    /* border: 3px solid pink; */
+    width: 98.5vw;
+    height: 10vh;
+    /* Adjust the height as needed */
+}
+
+.image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    /* Adjust the opacity as needed */
+    background: linear-gradient(to bottom,
+        );
+}
+
+.image-container img:nth-child(1) {
+    z-index: 1;
+}
+
+.image-container img:nth-child(2) {
+    z-index: 2;
+}
+
+.image-container img:nth-child(3) {
+    z-index: 3;
+}
+
+.stretched-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    padding: 10px 20px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #fff;
+    font-family: Roboto;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: none;
+
+}
+
+.stretched-button:hover {
+    background-color: #e2e6ea;
+}
+
+.stretched-button:hover {
+    background-color: #e2e6ea;
+}
+
+.stretched-button .arrow {
+    font-size: 20px;
+}
+
+.footerimg {
+    width: 300px;
+    height: 170px;
+    /* border: #469DCD 2px solid; */
+
+    /* flex-shrink: 0; */
+}
+
+.parag {
+    width: 300px;
+    color: #000;
+    font-family: "Inria Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    margin-left: 5% !important;
+    margin-top: -15px;
+    line-height: normal;
+    /* border: #469DCD 2px solid; */
+}
+
+.company {
+    color: #469DCD;
+    font-family: Roboto;
+}
+
+.lastsection {
+    margin-top: 50px;
+}
+
+.abovefooter {
+    margin-top: 100px !important;
+}

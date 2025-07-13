@@ -1,0 +1,995 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Ensures padding/borders don’t affect total width */
+}
+
+.body {
+    background: #dde6ec;
+    font-family: "Josefin Sans";
+}
+
+.logoimage {
+    height: 100px;
+    /* Adjust logo height as needed */
+    margin-right: 0px;
+
+}
+
+/* .secondsection{
+    height: 80vh;
+} */
+
+.nav-link {
+    color: #0D121C;
+    font-family: "Josefin Sans";
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: 1.2px;
+
+}
+
+.homelink {
+    font-weight: 500;
+}
+
+.navbar-nav {
+    gap: 10px !important;
+}
+
+.secondside {
+    padding-left: 15px;
+    padding-right: 4rem;
+
+}
+
+.SPANH1 {
+    color: #469dcd;
+
+}
+
+.contactus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 50px;
+    /* Adjust padding to better center text */
+    font-size: 34px;
+    color: white;
+    border-radius: 100px;
+    cursor: pointer;
+    background-color: #469DCD;
+    margin-right: 10px;
+    /* Add spacing between buttons */
+    border: none;
+    text-align: center;
+    line-height: 1;
+    /* Ensures text is centered properly */
+}
+
+
+
+.gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(217, 217, 217, 0.00) 0%, #E6F0F6 100%);
+    pointer-events: none;
+    /* Allows clicks to pass through to the image */
+}
+
+.secondsection {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /* padding: 40px 0; */
+    background: linear-gradient(90deg, #E6F0F6 100%, rgba(217, 217, 217, 0.00) 0%);
+
+
+}
+
+.button-container {
+    display: flex;
+    gap: 20px;
+    /* Adjust space between buttons */
+}
+
+/* .bluesection {
+    height: 20vh;
+    background-color: #469DCD;
+    align-items: center;
+
+} */
+
+/* .paragg {
+    color: #FFF;
+    text-align: center !important;
+    padding-top: 40px;
+    font-family: "Inria Sans";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-bottom: 30px;
+
+} */
+/* Scrollable list container */
+/* Scrollable list container */
+.scrollable-providers {
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden; /* prevent horizontal scroll */
+  padding-right: 6px;
+  margin-right: -6px; /* compensate for scrollbar width */
+}
+
+.scrollable-providers::-webkit-scrollbar {
+  width: 6px;
+}
+.scrollable-providers::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+/* Card styling */
+.provider-card {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12); /* subtle, all sides */
+  border-radius: 12px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  background-color: #fff;
+}
+.provider-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
+}
+
+
+/* Profile image */
+.provider-card .profile-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 12px;
+  border: 2px solid #fff;
+}
+
+/* Font sizes */
+.provider-card .card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+.provider-card .card-subtitle {
+  font-size: 0.85rem;
+  color: #555;
+}
+.provider-card .card-text {
+  font-size: 0.85rem;
+  color: #444;
+  margin-bottom: 4px;
+}
+
+
+.Our {
+    color: #469DCD;
+    font-family: "Josefin Sans";
+    font-size: 96px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: capitalize;
+    padding: 20px;
+}
+
+.services {
+    color: #000000;
+
+}
+
+
+.card {
+    border: none;
+    padding: 20px;
+    padding-bottom: 40px;
+}
+
+.CARDIMAGE {
+    width: 100px;
+    height: 100px;
+    padding-bottom: 15px;
+    flex-shrink: 0;
+}
+
+.card-title {
+    color: #0D121C;
+    font-family: "Inria Sans";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: capitalize;
+}
+
+.card-text {
+    color: #469DCD;
+    font-family: "Inria Sans";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: capitalize;
+}
+
+.ezy {
+    color: black;
+}
+
+/* 4th section  */
+.foursection {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 50px 8%;
+    /* Add some padding to avoid excessive gaps */
+}
+
+.about {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    /* Responsive font size */
+    font-weight: bold;
+    text-align: left;
+}
+
+.aboutparag {
+    font-size: clamp(1rem, 1.5vw, 1.3rem);
+    max-width: 600px;
+    /* Keep text width balanced */
+    line-height: 1.6;
+}
+
+.imgcards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    /* Increased gap for better spacing */
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
+    /* Slight left padding to balance alignment */
+}
+
+.iimm,
+.eemm {
+    margin: 10px 0;
+    width: 100%;
+    max-width: 260px;
+    /* Slightly increased size for better balance */
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.iimm:hover,
+.eemm:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive Fixes */
+@media (max-width: 992px) {
+    .foursection {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .imgcards {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        /* Reduced gap slightly for smaller screens */
+    }
+
+    .aboutparag {
+        max-width: 100%;
+        text-align: left;
+    }
+}
+
+@media (max-width: 768px) {
+    .imgcards {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 15px;
+        /* Smaller gap for mobile */
+    }
+}
+
+
+
+/* Adjust heading font sizes */
+.Our {
+    font-size: 2rem;
+    /* Default */
+}
+
+.services {
+    color: #4a4a4a;
+}
+
+/* Responsive Font Sizes */
+@media (min-width: 576px) {
+    .Our {
+        font-size: 2.5rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .Our {
+        font-size: 3rem;
+    }
+}
+
+/* Adjust Card Title & Text */
+.card-title {
+    font-size: 1.2rem;
+    /* Default */
+}
+
+.card-text {
+    font-size: 0.9rem;
+}
+
+/* Increase size on larger screens */
+@media (min-width: 576px) {
+    .card-title {
+        font-size: 1.4rem;
+    }
+
+    .card-text {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .card-title {
+        font-size: 1.5rem;
+    }
+
+    .card-text {
+        font-size: 1.1rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .card-title {
+        font-size: 1.6rem;
+    }
+
+    .card-text {
+        font-size: 1.2rem;
+    }
+}
+
+/* Card Styling */
+.card {
+    border: none;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+/* Image Size Optimization */
+.card img {
+    max-height: 150px;
+    object-fit: contain;
+}
+
+
+.CSTMREXP {
+    text-align: center;
+    margin-top: 100px !important;
+    margin-bottom: 100px !important;
+}
+
+.BLS {
+    height: 30vh;
+}
+
+.h3 {
+    color: var(--black, #000);
+    font-family: Montserrat;
+    font-size: 3.375rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.touch {
+    color: #469DCD;
+
+}
+
+/* footer */
+
+
+
+
+
+
+.mapsection {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 50px 0;
+    gap: 20px;
+    /* Adds spacing between map and form */
+}
+
+
+/* Google Maps iframe - Fixed dimensions */
+.map-iframe {
+    flex: 1;
+    /* Allows it to grow */
+    height: 70vh;
+    max-width: 445px;
+    border-radius: 10px;
+}
+
+
+/* Form Styling */
+.form-container {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Form Inputs & Select Box */
+.form-container input,
+.form-container select {
+    width: 100%;
+    /* Increased width for better UX */
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+}
+
+/* Form Button */
+.form-container button {
+    background-color: #469DCD;
+    color: #fff;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.form-container button:hover {
+    background-color: #0056b3;
+}
+
+/* Get in Touch Header */
+.getintouch {
+    color: #469DCD;
+    font-family: Montserrat;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-top: 2rem;
+}
+
+/* Blue Box - Fixing Overlap Issue */
+
+/* Responsive Fixes */
+@media (max-width: 992px) {
+    .mapsection {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .form-container {
+        order: 1;
+        /* Form first */
+        margin-bottom: 20px;
+    }
+
+    .map-iframe {
+        order: 2;
+        /* Map below form */
+        height: 400px;
+        max-width: 90%;
+    }
+}
+
+.contact-info {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+}
+
+.contact-info i {
+    font-size: 2rem;
+}
+
+.contact-info p {
+    margin-bottom: 0;
+    font-size: 1rem;
+}
+
+.image-container {
+    position: relative;
+    /* border: 3px solid pink; */
+    width: 98.5vw;
+    height: 10vh;
+    /* Adjust the height as needed */
+}
+
+.image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    /* Adjust the opacity as needed */
+    background: linear-gradient(to bottom,
+        );
+}
+
+.image-container img:nth-child(1) {
+    z-index: 1;
+}
+
+.image-container img:nth-child(2) {
+    z-index: 2;
+}
+
+.image-container img:nth-child(3) {
+    z-index: 3;
+}
+
+.stretched-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    padding: 10px 20px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #fff;
+    font-family: Roboto;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border: none;
+
+}
+
+.stretched-button:hover {
+    background-color: #e2e6ea;
+}
+
+.stretched-button:hover {
+    background-color: #e2e6ea;
+}
+
+.stretched-button .arrow {
+    font-size: 20px;
+}
+
+.footerimg {
+    width: 300px;
+    height: 170px;
+    /* border: #469DCD 2px solid; */
+
+    /* flex-shrink: 0; */
+}
+
+.parag {
+    width: 300px;
+    color: #000;
+    font-family: "Inria Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    margin-left: 5% !important;
+    margin-top: -15px;
+    line-height: normal;
+    /* border: #469DCD 2px solid; */
+}
+
+.company {
+    color: #469DCD;
+    font-family: Roboto;
+}
+
+.lastsection {
+    background: #f8f9fa;
+    /* Light grey background */
+    padding: 50px 20px;
+}
+
+.abovefooter {
+    margin-top: 100px !important;
+}
+
+
+/* Navbar Link Font Sizing - Dynamically Adjusted */
+/* Navbar Link Font Sizing - Slightly Larger at 100% */
+.navbar-nav .nav-link {
+    font-size: clamp(14px, 1.3vw, 18px);
+    /* Increases at 100%, scales down smoothly */
+    font-weight: 500;
+}
+
+/* Responsive Logo Sizing - Adjusted */
+.logoimage {
+    max-width: clamp(120px, 12vw, 200px);
+    /* Normal size at 100%, shrinks on zoom out */
+    height: auto;
+}
+
+/* Medium Screens (Tablets) */
+@media (max-width: 992px) {
+    .navbar-nav .nav-link {
+        font-size: 16px;
+        /* Slightly bigger for tablets */
+    }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .secondsection {
+        padding-top: 3rem;
+    }
+
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .navbar-nav .nav-link {
+        font-size: 14px;
+
+    }
+
+    .logoimage {
+        max-width: 150px;
+    }
+}
+
+/* Small Mobile Screens */
+@media (max-width: 576px) {
+    .navbar-nav .nav-link {
+        font-size: 12px;
+    }
+
+    .logoimage {
+        max-width: 130px;
+    }
+}
+
+
+/* Second Section */
+
+/* Make the entire section responsive */
+.secondsection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Responsive image container */
+.image-containerr {
+    position: relative;
+    width: 100%;
+    max-width: 626px;
+}
+
+.image {
+    width: 100%;
+    /* height: auto; */
+}
+
+/* Responsive Heading */
+.HEADING {
+    font-size: clamp(24px, 2.5vw, 40px);
+    /* Scales dynamically */
+    font-weight: bold;
+    line-height: 1.2;
+    color: #4a4a4a;
+}
+
+.btn-site {
+    background-color: #469dcd;
+    color: white;
+    font-weight: bold;
+    width: 150px;
+}
+
+.btn-site:hover {
+    color: white;
+    background-color: #3c85ac;
+}
+
+/* Responsive Paragraph */
+
+
+.para {
+    font-size: clamp(14px, 1.2vw, 18px);
+    color: #0D121C;
+    font-family: "Inria Sans";
+    font-style: normal;
+    line-height: normal;
+    margin-top: 1rem;
+}
+
+/* Button container */
+.button-container {
+    display: flex;
+    gap: 15px;
+    /* Space between buttons */
+}
+
+/* Responsive Buttons */
+.contactus {
+    display: inline-flex;
+    padding: 12px 40px;
+    /* Adjusted padding */
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(16px, 1.5vw, 22px);
+    /* Adjusts with screen */
+    color: white;
+    border-radius: 50px;
+    cursor: pointer;
+    background-color: #469DCD;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.contactus:hover {
+    background-color: #3c85ac;
+}
+
+.contactus:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* Responsive layout for smaller screens */
+@media (max-width: 992px) {
+    .image-containerr {
+        display: none;
+    }
+
+    .secondsection {
+        padding-top: 3rem !important;
+        flex-direction: column;
+    }
+
+    .image-containerr {
+        max-width: 100%;
+    }
+
+    .HEADING {
+        font-size: 32px;
+    }
+
+    .para {
+        font-size: 16px;
+    }
+
+    .button-container {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .secondsection {
+        padding-top: 3rem !important;
+    }
+
+    .image-containerr {
+        display: none;
+    }
+
+    .HEADING {
+        font-size: 28px;
+    }
+
+    .para {
+        font-size: 14px;
+    }
+
+    .contactus {
+        font-size: 18px;
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+/* Ensure text stays centered */
+.BLS {
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Headings */
+.bluesection {
+    background-color: #469DCD;
+    color: white;
+    padding: 2rem;
+    width: 100%;
+    max-width: 100vw;
+    /* Ensures it does not exceed screen width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+    overflow: hidden;
+    /* Prevents extra width issues */
+}
+
+/* Headings */
+.heading1 {
+    font-family: Poppins, sans-serif;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    /* Smaller text */
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* Paragraph */
+.parag1 {
+    font-family: Poppins, sans-serif;
+    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    /* Responsive and smaller */
+    font-weight: 400;
+    line-height: 1.4;
+    max-width: 90%;
+    word-wrap: break-word;
+}
+
+/* Rating Stars */
+.rating {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 5px;
+    /* Ensures spacing */
+}
+
+.rating-star img {
+    width: clamp(14px, 2.5vw, 20px);
+    /* Smaller and responsive */
+    height: auto;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .bluesection {
+        padding: 1.5rem;
+        gap: 8px;
+    }
+
+    .heading1 {
+        font-size: 1.3rem;
+    }
+
+    .parag1 {
+        font-size: 1rem;
+    }
+
+    .rating-star img {
+        width: 16px;
+    }
+}
+
+@media (max-width: 576px) {
+    .bluesection {
+        padding: 1rem;
+        gap: 6px;
+    }
+
+    .heading1 {
+        font-size: 1.1rem;
+    }
+
+    .parag1 {
+        font-size: 0.9rem;
+    }
+
+    .rating-star img {
+        width: 14px;
+    }
+}
+
+@media (max-width: 576px) {
+    .modal-content {
+        padding: 20px !important;
+    }
+
+    .modal-content h2 {
+        font-size: clamp(20px, 5vw, 35px);
+    }
+
+    .modal-content p {
+        font-size: 14px;
+    }
+
+    .modal-content .d-flex {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .modal-content img {
+        width: 60px;
+    }
+
+    .btn-site {
+        font-size: 14px;
+        padding: 8px 20px;
+    }
+}
+
+
+
+.modal-custom-width .modal-content {
+    max-height: 90vh;
+    /* Prevents modal from exceeding screen height */
+    overflow-y: auto;
+    /* Enables scrolling if necessary */
+    padding: 20px;
+}
+
+#customerSignupForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-custom-width .modal-content::-webkit-scrollbar {
+    width: 6px;
+    /* Thin scrollbar */
+}
+
+.modal-custom-width .modal-content::-webkit-scrollbar-thumb {
+    background: #888;
+    /* Scroll thumb color */
+    border-radius: 4px;
+    /* Rounded edges */
+}
+
+.modal-custom-width .modal-content::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    /* Darker on hover */
+}
+
+/* Remove backdrop effect only for the Terms and Conditions modal */
+
+.modal-custom-width {
+    max-width: 450px;
+    /* or whatever width you need */
+}

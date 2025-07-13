@@ -1,0 +1,98 @@
+// Load model once
+let model;
+const categories = [
+  "Construction",
+  "Plumbing Services",
+  "Electrical Services",
+  "Home Shifting",
+  "Fulfil Labour Requirements",
+  "Solar Panel Installation"
+];
+
+function categoryToOneHot(category) {
+  return categories.map(c => c === category ? 1 : 0);
+}
+
+function timeToMinutes(timeStr) {
+  const [hours, minutes] = timeStr.split(':').map(Number);
+  return hours * 60 + minutes;
+}
+
+function getAvailabilityScore(providerAvailability, userAvailableTime) {
+  const userDate = new Date(userAvailableTime);
+  const userDay = userDate.toLocaleDateString('en-US', { weekday: 'long' });
+  const userMinutes = timeToMinutes(userDate.toTimeString().slice(0, 5));
+
+  for (const slot of providerAvailability || []) {
+    if (slot.day === userDay) {
+      const fromMinutes = timeToMinutes(slot.from);
+      const toMinutes = timeToMinutes(slot.to);
+      if (userMinutes >= fromMinutes && userMinutes <= toMinutes) {
+        return 1.0;
+      }
+    }
+  }
+  return 0.0;
+}
+
+function getInputTensor({ serviceCategory, location, desc, availableTime }, matchedProvider) {
+  const oneHotCategory = categoryToOneHot(serviceCategory);
+  const addressLength = location.trim().length / 100;
+  const descriptionLength = (desc || '').trim().split(' ').length / 100;
+  const availabilityScore = getAvailabilityScore(matchedProvider.availability, availableTime);
+
+  return tf.tensor2d([
+    [...oneHotCategory, addressLength, descriptionLength, availabilityScore]
+  ]);
+}
+
+async function loadModel() {
+  if (!model) {
+    const modelPath = 'file://' + path.join(__dirname, '../public/model/trained_model_tfjs/model.json');
+    model = await tf.loadLayersModel(modelPath);
+    console.log('✅ TensorFlow model loaded from', modelPath);
+  }
+}
+
+// ✅ Route: Estimate Budget
+router.post('/estimate', async (req, res) => {
+  try {
+    const { fullName, email, phone, location, serviceCategory, desc, availableTime } = req.body;
+
+    if (!location || !serviceCategory || !desc) {
+      return res.status(400).json({ success: false, message: 'Missing required fields.' });
+    }
+
+    await loadModel();
+
+    const matchedProvider = await serviceProviderModel.findOne({
+      serviceCategory,
+      address: { $regex: new RegExp(location, 'i') }
+    });
+
+    if (!matchedProvider) {
+      return res.status(404).json({ success: false, message: 'No providers found in your area.' });
+    }
+
+    const inputTensor = getInputTensor({ serviceCategory, location, desc, availableTime }, matchedProvider);
+    const prediction = model.predict(inputTensor);
+    const predictionValue = await prediction.data();
+    const estimatedBudget = Math.round(predictionValue[0]) + 500;
+
+    res.json({
+      success: true,
+      estimatedBudget,
+      fullName,
+      email,
+      phone,
+      location,
+      serviceCategory,
+      desc,
+      availableTime
+    });
+
+  } catch (err) {
+    console.error('Error in /estimate:', err);
+    res.status(500).json({ success: false, message: 'Budget estimation failed due to server error.' });
+  }
+});
