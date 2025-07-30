@@ -69,8 +69,8 @@
                 <div class="mb-3">
                     <label class="form-label">Add Weekly Availability</label>
                     <div id="availabilityContainer">
-                        <div class="row mb-2 availability-row align-items-center">
-                            <div class="col-md-3 p-0">
+                        <div class="row mb-2 availability-row align-items-center justify-content-center">
+                            <div class="col-md-4 p-0">
                                 <select class="form-control" name="availability[0][day]" required>
                                     <option value="">Select Day</option>
                                     <option value="Monday">Monday</option>
@@ -82,16 +82,16 @@
                                     <option value="Sunday">Sunday</option>
                                 </select>
                             </div>
-                            <div class="col-md-3 text-center">
+                            <div class="col-md-2 text-center m-0 p-0">
                                 <span>From</span>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2 p-0">
                                 <input type="time" class="form-control" name="availability[0][from]" required>
                             </div>
                             <div class="col-md-1 text-center">
                                 <span>to</span>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-2 p-0">
                                 <input type="time" class="form-control" name="availability[0][to]" required>
                             </div>
                         </div>
@@ -103,7 +103,7 @@
 
                 <div class="mb-3">
                     <label for="location" class="form-label">Location</label>
-                    <input type="text" class="form-control" id="location" placeholder="Enter your location"
+                    <input type="text" class="form-control" id="locationInput" placeholder="Enter your location"
                         name="location" required>
                     <!-- Map for selecting location -->
                     <div id="providerMap" style="height: 100px; margin-top: 10px;"></div>
@@ -147,9 +147,9 @@
     function addAvailability() {
         const container = document.getElementById("availabilityContainer");
         const row = document.createElement("div");
-        row.className = "row mb-2 availability-row align-items-center";
+        row.className = "row mb-2 availability-row align-items-center justify-content-center";
         row.innerHTML = `
-            <div class="col-md-4">
+            <div class="col-md-4 p-0">
                 <select class="form-control" name="availability[${availabilityIndex}][day]" required>
                     <option value="">Select Day</option>
                     <option value="Monday">Monday</option>
@@ -161,22 +161,23 @@
                     <option value="Sunday">Sunday</option>
                 </select>
             </div>
-            <div class="col-md-3 text-center">
+            <div class="col-md-2 text-center p-0">
                 <span>From</span>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2 p-0">
                 <input type="time" class="form-control" name="availability[${availabilityIndex}][from]" required>
             </div>
             <div class="col-md-1 text-center">
                 <span>to</span>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 p-0">
                 <input type="time" class="form-control" name="availability[${availabilityIndex}][to]" required>
             </div>
         `;
         container.appendChild(row);
         availabilityIndex++;
     }
+    
     let providerMap;
     let providerMarker;
 
@@ -186,29 +187,35 @@
             return;
         }
 
-        providerMap = L.map('providerMap').setView([33.5886, 71.4425], 13); // Center on Kohat
+        // 1. Initialize map
+        providerMap = L.map('providerMap').setView([33.5886, 71.4425], 13); // Kohat
 
+        // 2. Add OpenStreetMap tiles
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; OpenStreetMap contributors'
         }).addTo(providerMap);
 
-        // Add geocoder (search bar)
+        // 3. Add geocoder control
         const geocoder = L.Control.geocoder({
             geocoder: L.Control.Geocoder.nominatim(),
             defaultMarkGeocode: false
         })
-            .on('markgeocode', e => {
-                const { center, name } = e.geocode;
-                placeProviderMarker(center);
-                setProviderLocation(center, name);
-            })
-            .addTo(providerMap);
+        .on('markgeocode', e => {
+            const { center, name } = e.geocode;
+            placeProviderMarker(center);
+            setProviderLocation(center, name);
+        })
+        .addTo(providerMap);
 
+        // 4. Handle map click
         providerMap.on('click', function (e) {
-            placeProviderMarker(e.latlng);
-            reverseGeocodeAndFill(e.latlng);
+            const latlng = e.latlng;
+            console.log("🟢 Map clicked at:", latlng);
+            placeProviderMarker(latlng);
+            reverseGeocodeAndFill(latlng);
         });
 
+        // 5. Place or update marker
         function placeProviderMarker(latlng) {
             if (providerMarker) {
                 providerMarker.setLatLng(latlng);
@@ -217,41 +224,73 @@
             }
         }
 
+        // 6. Set hidden and visible location values
         function setProviderLocation(latlng, name = '') {
+            console.log("📍 Setting LatLng:", latlng, "Address:", name);
+
             document.getElementById('latitude').value = latlng.lat;
             document.getElementById('longitude').value = latlng.lng;
-            if (name) document.getElementById('location').value = name;
+
+            const locationInput = document.getElementById('locationInput');
+            if (locationInput && name) {
+                locationInput.value = name;
+                console.log("✅ Location input filled:", name);
+            } else {
+                console.warn("⚠️ Location input not found or name missing");
+            }
         }
 
+        // 7. Reverse geocode clicked location
         function reverseGeocodeAndFill(latlng) {
-            fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latlng.lat}&lon=${latlng.lng}`)
-                .then(res => res.json())
+            const url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latlng.lat}&lon=${latlng.lng}`;
+            console.log("🔄 Reverse geocoding:", url);
+
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                    return response.json();
+                })
                 .then(data => {
+                    console.log("📦 Reverse geocode response:", data);
                     const address = data.display_name || '';
-                    document.getElementById('location').value = address;
-                    setProviderLocation(latlng, address);
+                    if (address) {
+                        setProviderLocation(latlng, address);
+                    } else {
+                        console.warn("⚠️ No display_name in response");
+                    }
                 })
                 .catch(err => {
-                    console.error('Reverse geocode failed:', err);
-                    document.getElementById('location').value = '';
+                    console.error('🛑 Reverse geocoding failed:', err);
+                    alert("Reverse geocoding failed. Check console for details.");
                 });
         }
 
-        // Manual location input
-        document.getElementById('location').addEventListener('change', e => {
-            const query = e.target.value;
+        // 8. Manual location input geocoding
+        document.getElementById('locationInput').addEventListener('change', e => {
+            let query = e.target.value.trim();
+
+            // Improve local match
+            if (!query.toLowerCase().includes('kohat')) {
+                query += ', Kohat, Khyber Pakhtunkhwa, Pakistan';
+            }
+
             geocoder.options.geocoder.geocode(query, results => {
                 if (results && results.length > 0) {
-                    const r = results[0];
-                    providerMap.setView(r.center, 14);
-                    placeProviderMarker(r.center);
-                    setProviderLocation(r.center, r.name);
+                    const result = results[0];
+                    providerMap.setView(result.center, 15);
+                    placeProviderMarker(result.center);
+                    setProviderLocation(result.center, result.name || query);
                 } else {
-                    alert('Location not found.');
+                    alert('⚠️ Location not found. Try being more specific.');
                 }
             });
         });
     }
+
+    // 9. Load map after DOM content is ready
+    window.addEventListener('DOMContentLoaded', initProviderMap);
+
+
 
     // Initialize map when modal opens
     $('#serviceProviderSignupModal').on('shown.bs.modal', function () {

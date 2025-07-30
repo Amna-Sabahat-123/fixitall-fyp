@@ -118,13 +118,22 @@ module.exports.loginUser = async function (req, res) {
   if (!user) {
     req.flash("error", "Email or password incorrect");
     return res.redirect("/?showLogin=true");
-
   }
 
   bcrypt.compare(password, user.password, function (err, result) {
     if (result) {
       let token = generateToken(user);
       res.cookie("token", token);
+
+      // ✅ Save user info in session
+      req.session.user = {
+        _id: user._id,
+        fullName: user.fullName,
+        email: user.email,
+        phone: user.phone,
+        location: user.location
+      };
+
       res.render("customerdashboard", { user });
     } else {
       req.flash("error", "Email or password incorrect");

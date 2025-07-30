@@ -115,45 +115,63 @@
                       %>
                       <div class="col-md-6 col-lg-4 d-flex">
                         <div class="card provider-card w-100 p-3 border-0 shadow-sm"
-                          data-desc="<%= provider.description %>" data-phone="<%= provider.phone %>">
+                          data-desc="<%= provider.description %>"
+                          data-phone="<%= provider.phone %>"
+                          data-lat="<%= provider.location.coordinates[1] %>"
+                          data-lng="<%= provider.location.coordinates[0] %>">
+                      
+                          <!-- Profile Image & Name -->
                           <div class="d-flex align-items-center mb-3">
-                            <img src="<%= profileImg %>" class="rounded-circle me-3"
-                              style="width: 60px; height: 60px; object-fit: cover;" />
+                            <img src="https://ui-avatars.com/api/?name=<%= encodeURIComponent(provider.fullName) %>&background=<%= Math.floor(Math.random() * 16777215).toString(16) %>&color=fff&rounded=true"
+                              class="rounded-circle me-3" style="width: 60px; height: 60px; object-fit: cover;" />
                             <div>
-                              <h5 class="mb-0">
-                                <%= provider.fullName %>
-                              </h5>
-                              <small class="text-muted">
-                                <%= provider.serviceCategory %>
-                              </small>
+                              <h5 class="mb-0"><%= provider.fullName %></h5>
+                              <small class="text-muted"><%= provider.serviceCategory %></small>
                             </div>
                           </div>
-                          <p><strong>Location:</strong>
-                            <%= provider.address %>
+                      
+                          <!-- Provider Details -->
+                          <p><strong>Location:</strong> <%= provider.address %></p>
+                          <p><strong>Rate:</strong> <%= provider.baseRate %> PKR</p>
+                      
+                          <p><strong>Estimated Budget:</strong>
+                            <% if (user) { %>
+                              <%= provider.estimatedBudget %> PKR
+                            <% } else { %>
+                              <span class="text-muted">Login to view</span>
+                            <% } %>
                           </p>
-                          <p><strong>Rate:</strong>
-                            <%= provider.baseRate %> PKR
-                          </p>
-                          <p><strong>Orders Completed:</strong>
-                            <%= Math.floor(Math.random() * 50 + 10) %>
-                          </p>
+                      
+                          <p><strong>Orders Completed:</strong> <%= Math.floor(Math.random() * 50 + 10) %></p>
+                      
                           <p><strong>Availability:</strong><br>
-                            <% if (provider.availability && provider.availability.length> 0) { %>
-                              <% provider.availability.forEach((slot, index)=> {
-                                const from = new Date('1970-01-01T' + slot.from + 'Z').toLocaleTimeString('en-US', {
-                                hour: 'numeric', minute: '2-digit', hour12: true });
-                                const to = new Date('1970-01-01T' + slot.to + 'Z').toLocaleTimeString('en-US', { hour:
-                                'numeric', minute: '2-digit', hour12: true });
-                                %>
+                            <% if (provider.availability && provider.availability.length > 0) { %>
+                              <% provider.availability.forEach((slot, index) => {
+                                const from = new Date('1970-01-01T' + slot.from + 'Z').toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+                                const to = new Date('1970-01-01T' + slot.to + 'Z').toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+                              %>
                                 <%= slot.day %>: <%= from %> - <%= to %>
-                                      <%= index !==provider.availability.length - 1 ? '<br>' : '' %>
-                                        <% }) %>
-                                          <% } else { %>
-                                            Not specified
-                                            <% } %>
+                                <%= index !== provider.availability.length - 1 ? '<br>' : '' %>
+                              <% }) %>
+                            <% } else { %>
+                              Not specified
+                            <% } %>
                           </p>
+                      
+                          <!-- Phone Reveal Section -->
+                          <% if (user) { %>
+                            <div class="collapse mt-2" id="phone<%= provider._id %>">
+                              <p><strong>Phone:</strong> <%= provider.phone %></p>
+                            </div>
+                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="collapse"
+                              data-bs-target="#phone<%= provider._id %>">See Phone Number</button>
+                          <% } else { %>
+                            <button type="button" class="btn btn-outline-secondary btn-sm show-signup">See Phone Number</button>
+                          <% } %>
+                      
                         </div>
                       </div>
+                      
                       <% }) %>
                         <% } %>
           </div>
@@ -180,13 +198,14 @@
                       <p id="modalCategory" class="text-muted mb-0"></p>
                     </div>
                   </div>
-                  <button class="btn btn-primary">Get in Touch</button>
+                  <button class="btn btn-primary">Book Now</button>
                 </div>
 
                 <p><strong>Location:</strong> <span id="modalLocation"></span></p>
                 <p><strong>Description:</strong> <span id="modalDesc"></span></p>
                 <p><strong>Availability:</strong><br><span id="modalAvailability"></span></p>
                 <p><strong>Rate:</strong> <span id="modalRate"></span></p>
+                <p><strong>Estimated Budget:</strong> <span id="modalBudget"></span></p>
                 <p><strong>Orders Completed:</strong> <span id="modalOrders"></span></p>
                 <p>
                   <strong>Phone Number:</strong>
@@ -205,87 +224,57 @@
         <script>
           document.addEventListener("DOMContentLoaded", function () {
             const modal = new bootstrap.Modal(document.getElementById("providerModal"));
-
-            document.querySelectorAll(".provider-card").forEach(card => {
+        
+            document.querySelectorAll(".provider-card").forEach(card => { 
               card.addEventListener("click", function () {
                 const name = card.querySelector("h5").textContent.trim();
                 const category = card.querySelector("small").textContent.trim();
                 const location = card.querySelector("p:nth-of-type(1)").textContent.replace("Location:", "").trim();
                 const rate = card.querySelector("p:nth-of-type(2)").textContent.replace("Rate:", "").trim();
-                const orders = card.querySelector("p:nth-of-type(3)").textContent.replace("Orders Completed:", "").trim();
-                const availability = card.querySelector("p:nth-of-type(4)").innerHTML.replace("Availability:", "").trim();
+                const budget = card.querySelector("p:nth-of-type(3)").textContent.replace("Estimated Budget:", "").trim();
+                const orders = card.querySelector("p:nth-of-type(4)").textContent.replace("Orders Completed:", "").trim();
+                const availability = card.querySelector("p:nth-of-type(5)").innerHTML.replace("Availability:", "").trim();
                 const description = card.getAttribute("data-desc");
                 const phone = card.getAttribute("data-phone");
                 const profileImg = card.querySelector("img").src;
-
+        
                 document.getElementById("modalName").textContent = name;
                 document.getElementById("modalCategory").textContent = category;
                 document.getElementById("modalLocation").textContent = location;
                 document.getElementById("modalRate").textContent = rate;
+                document.getElementById("modalBudget").textContent = budget;
                 document.getElementById("modalOrders").textContent = orders;
                 document.getElementById("modalAvailability").innerHTML = availability;
                 document.getElementById("modalDesc").textContent = description;
                 document.getElementById("modalPhone").textContent = "034880xxxx";
                 document.getElementById("modalProfileImg").src = profileImg;
-
+        
                 const seePhoneLink = document.getElementById("seePhoneLink");
                 seePhoneLink.onclick = function (e) {
                   e.preventDefault();
                   const isLoggedIn = <%= typeof user !== 'undefined' ? 'true' : 'false' %>;
-
+        
                   if (isLoggedIn === 'true') {
                     document.getElementById("modalPhone").textContent = phone;
-                    this.remove();
+                    this.remove(); // Remove the "See Phone Number" link
                   } else {
                     modal.hide();
                     const signupModal = new bootstrap.Modal(document.getElementById("customerSignupModal"));
                     signupModal.show();
                   }
                 };
-
+        
                 modal.show();
               });
             });
-
+        
             document.getElementById("closeModalOutside").addEventListener("click", function () {
               modal.hide();
             });
-
-            //   document.getElementById("customerSignupForm").addEventListener("submit", async function (e) {
-            //     e.preventDefault();
-
-            //     const fullName = document.getElementById("fullName").value;
-            //     const email = document.getElementById("email").value;
-            //     const phone = document.getElementById("phone").value;
-            //     const password = document.getElementById("password").value;
-            //     const location = document.getElementById("location").value;
-            //     const agreement = document.getElementById("agreement").checked;
-
-            //     const response = await fetch("/customers/register", {
-            //       method: "POST",
-            //       headers: { "Content-Type": "application/json" },
-            //       body: JSON.stringify({ fullName, email, phone, password, location, agreement })
-            //     });
-
-            //     const data = await response.json();
-            //     const errorContainer = document.getElementById("signupErrorContainer");
-            //     errorContainer.innerHTML = "";
-
-            //     if (!data.success) {
-            //       const signupModal = new bootstrap.Modal(document.getElementById("customerSignupModal"));
-            //       signupModal.show();
-
-            //       errorContainer.innerHTML = `
-            //         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            //           ${data.message}
-            //           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            //         </div>`;
-            //     } else {
-            //       window.location.href = "/customersdashboard";
-            //     }
-            //   });
           });
+          
         </script>
+        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
         <script src="/js/script.js"></script>

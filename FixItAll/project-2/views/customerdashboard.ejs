@@ -85,9 +85,7 @@
                     <h3 class="mb-4">Book a Service</h3>
                     <div class="card shadow-sm">
                         <div class="card-body">
-                            <div id="locationError" class="alert alert-danger d-none" role="alert">
-    📍 Please mark your location on the map before booking.
-</div>
+
 
                             <form id="bookingForm" action="/quickBook/confirm" method="POST">
 
@@ -118,7 +116,7 @@
                                         <option>Home Shifting</option>
                                         <option>Solar Panel Installation</option>
                                         <option>Electrical Services</option>
-                                        <option>Labour Requirement</option>
+                                        <option>Fulfil Labour Requirements</option>
                                         <option>Plumbing Services</option>
                                     </select>
                                 </div>
@@ -138,9 +136,12 @@
                                     placeholder="Search or click on map to select location" required>
 
 
+
                                 <!-- ✅ ADD THIS LINE: Leaflet map container -->
                                 <div id="mapid" class="mb-3"></div>
-
+                                <div id="locationError" class="alert alert-danger d-none" role="alert">
+                                    📍 Please mark your location on the map before booking.
+                                </div>
                                 <!-- Hidden coordinate fields -->
                                 <input type="hidden" name="latitude" id="latitude" />
                                 <input type="hidden" name="longitude" id="longitude" />
@@ -182,10 +183,11 @@
 
         // Ensure map resizes correctly when tab is shown
         $('a[data-toggle="pill"][href="#booking"]').on('shown.bs.tab', function () {
-            setTimeout(() => {
-                map.invalidateSize();
-            }, 300);
-        });
+    setTimeout(() => {
+        map._onResize(); // Force internal resize logic
+        map.invalidateSize(); // Recalculate size
+    }, 300);
+});
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; OpenStreetMap contributors'
@@ -273,6 +275,33 @@
                 document.title = e.target.textContent.trim() + ' | EZY & FIX';
             });
         });
+        document.getElementById('bookingForm').addEventListener('submit', function (e) {
+    const lat = document.getElementById('latitude').value;
+    const lng = document.getElementById('longitude').value;
+    const errorBox = document.getElementById('locationError');
+
+    console.log('Form submitted');
+    console.log('Latitude:', lat);
+    console.log('Longitude:', lng);
+
+    if (!lat || !lng || isNaN(parseFloat(lat)) || isNaN(parseFloat(lng))) {
+        e.preventDefault(); // ❌ Stop submission
+        console.log('❌ Invalid location, preventing submission');
+
+        errorBox.classList.remove('d-none');
+        document.getElementById('mapid').scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('mapid').style.border = '2px solid red';
+
+        setTimeout(() => {
+            errorBox.classList.add('d-none');
+            document.getElementById('mapid').style.border = '1px solid #ccc';
+        }, 5000);
+    } else {
+        console.log('✅ Location is valid, allowing submit');
+    }
+});
+
+
     </script>
 
 </body>

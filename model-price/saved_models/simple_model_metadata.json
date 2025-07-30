@@ -1,0 +1,22 @@
+{
+  "normParams": {
+    "inputMean": [
+      80.71395111083984,
+      4029.384521484375
+    ],
+    "inputStd": [
+      45.9582633972168,
+      2328.379150390625
+    ],
+    "labelMean": 4443.08056640625,
+    "labelStd": 2334.682861328125
+  },
+  "modelConfig": {
+    "MIN_DISTANCE": 0.1,
+    "MAX_DISTANCE": 160,
+    "MIN_BASE_RATE": 200,
+    "MAX_BASE_RATE": 8000
+  },
+  "trainingDate": "2025-07-20T23:05:08.149Z",
+  "version": "2.0.0"
+}
